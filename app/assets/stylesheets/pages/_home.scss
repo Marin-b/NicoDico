@@ -1,1 +1,64 @@
-// Specific CSS for your home-page
+.orange {
+  color: $orange;
+}
+.white {
+  color: white;
+}
+.wrapper-blue {
+  background-color: $blue;
+  height: 60vh;
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+}
+.title {
+  font-family: montserrat;
+  font-weight: bold;
+  font-size: 100px;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  width: 100%;
+}
+.title1 {
+  width: 100%;
+  margin-right: 30px;
+}
+.title2 {
+  width: 100%;
+  margin-left: 30px;
+}
+.subtitle {
+  padding: 30px;
+  font-style: roboto;
+  font-weight: bold;
+}
+.text-home {
+  width: 70vw;
+  margin: 0 auto;
+}
+.btn-home {
+  width: 50%;
+  text-align: center;
+  padding-top: 22px;
+  border: $blue solid 1px;
+  padding-bottom: 13px;
+  h2 {
+    font-family: montserrat;
+    font-weight: bold;
+  }
+  &:hover{
+    text-decoration: none;
+  }
+}
+.blue {
+  color: $blue;
+}
+.btn-row {
+  height: 50%;
+}
+.buttons-home {
+  height: 33vh;
+}
+.opacity {
+  opacity: 0.7;
+}

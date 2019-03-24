@@ -1,0 +1,2 @@
+class SynonymeKor < ApplicationRecord
+end

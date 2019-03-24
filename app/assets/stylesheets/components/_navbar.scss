@@ -1,12 +1,28 @@
 .navbar-lewagon {
-  justify-content: space-between;
+  text-align:center;
   background: white;
+  height: 50px;
+  display: block;
+  h2 {
+    position: absolute;
+    font-family: roboto;
+    font-weight: bold;
+    color: $blue;
+    left: 49%;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+ i {
+  position: absolute;
+  right: 50px;
+  color: $blue;
+  border: 0;
+ }
+.dropdown-toggle::after {
+    display:none;
 }
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.dropdown-menu {
+  position: absolute;
+  right: 10px;
+  left: auto;
 }

@@ -1,0 +1,2 @@
+class WordKor < ApplicationRecord
+end

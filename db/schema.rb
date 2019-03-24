@@ -10,10 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_24_110546) do
+ActiveRecord::Schema.define(version: 2019_03_24_124039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "antonymes_kor", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.string "antonym"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nuance_id"], name: "index_antonymes_kor_on_nuance_id"
+  end
+
+  create_table "exemples_kor", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.text "exemple_cible"
+    t.text "exemple_traduction"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nuance_id"], name: "index_exemples_kor_on_nuance_id"
+  end
+
+  create_table "hanjas", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.string "hanja"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nuance_id"], name: "index_hanjas_on_nuance_id"
+  end
+
+  create_table "nuances_kor", force: :cascade do |t|
+    t.bigint "word_id"
+    t.bigint "user_id"
+    t.string "nature_francais"
+    t.string "nature_cible"
+    t.string "traduction"
+    t.text "commentaire"
+    t.string "remarque"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_nuances_kor_on_user_id"
+    t.index ["word_id"], name: "index_nuances_kor_on_word_id"
+  end
+
+  create_table "synonymes_kor", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.string "synonyme"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nuance_id"], name: "index_synonymes_kor_on_nuance_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +75,16 @@ ActiveRecord::Schema.define(version: 2019_03_24_110546) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "words_kor", force: :cascade do |t|
+    t.string "word"
+    t.integer "click"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "antonymes_kor", "nuances_kor", column: "nuance_id"
+  add_foreign_key "exemples_kor", "nuances_kor", column: "nuance_id"
+  add_foreign_key "hanjas", "nuances_kor", column: "nuance_id"
+  add_foreign_key "nuances_kor", "users"
+  add_foreign_key "nuances_kor", "words_kor", column: "word_id"
 end
