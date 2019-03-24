@@ -1,0 +1,8 @@
+<div class="searchbar-wrapper">
+  <%= form_tag search_path, method: :post, class:"searchform" do %>
+    <%= text_field_tag :search_word,"Chercher un mot", class: "searchbar" %>
+    <%= button_tag :submit do %>
+      <i class='fas fa-search fa-2x'></i>
+    <% end %>
+  <% end %>
+</div>

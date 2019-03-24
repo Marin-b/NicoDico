@@ -28,7 +28,7 @@
   margin-left: 30px;
 }
 .subtitle {
-  padding: 30px;
+  padding: 40px;
   font-style: roboto;
   font-weight: bold;
 }
@@ -55,10 +55,16 @@
 }
 .btn-row {
   height: 50%;
+  display: flex;
 }
 .buttons-home {
-  height: 33vh;
+  height: 34vh;
+  width: 100%;
 }
 .opacity {
   opacity: 0.7;
+}
+.row {
+  min-width: 100%;
+  max-width: 100%;
 }

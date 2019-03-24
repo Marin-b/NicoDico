@@ -1,2 +1,0 @@
-class WordKor < ApplicationRecord
-end

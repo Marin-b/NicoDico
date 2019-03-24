@@ -1,14 +1,14 @@
 .navbar-lewagon {
-  text-align:center;
+  text-align: center;
   background: white;
   height: 50px;
   display: block;
   h2 {
-    position: absolute;
     font-family: roboto;
     font-weight: bold;
     color: $blue;
-    left: 49%;
+    margin: 0 auto;
+    display: inline-block;
   }
 }
 
