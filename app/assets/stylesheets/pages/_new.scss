@@ -1,0 +1,58 @@
+.new-wrapper {
+  .JSmedaddy {
+    h4 {
+      color: white;
+      margin: 10px;
+    }
+  }
+  .word-show {
+    height: 100px;
+    justify-content: space-around;
+  }
+}
+.nuancemot {
+  display:flex;
+  justify-content: space-around;
+}
+.nuance-header-form {
+  text-align: center;
+}
+
+.grouped {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.has-many-form {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  div {
+    padding-right: 10px;
+  }
+  .iconsActions {
+    i {
+      position: static;
+    }
+    width: 100%;
+  }
+}
+
+.hanja-form {
+  input {
+    width: 80px;
+  }
+}
+
+.exemple-form{
+  textarea {
+    width: 90%;
+  }
+  .nested-fields{
+    display:flex;
+    width: 100%
+  }
+}
+
+

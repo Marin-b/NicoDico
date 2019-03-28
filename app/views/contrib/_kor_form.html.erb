@@ -1,0 +1,35 @@
+<% @kor_word = KorWord.new %>
+<%= simple_form_for @kor_word, url: kor_word_index_path(@country) do |f| %>
+  <%= f.input :word %>
+  <hr>
+  <div class="nuance-header-form">
+    <h5>Nuance</h5>
+  </div>
+  <%= f.simple_fields_for KorNuance.new do |ff| %>
+    <%= ff.input :traduction %>
+
+    <div class="flex-between">
+      <%= ff.input :nature_francais %>
+      <%= ff.input :nature_cible %>
+    </div>
+    <%= ff.input :remarque %>
+    <hr>
+    <h6>Hanja</h6>
+    <div class="hanja-form">
+      <%= render 'has_many_form', ff: ff, table: :hanjas, partial: "hanja_fields" %>
+    </div>
+    <hr>
+    <h6>Exemples</h6>
+    <div class="exemple-form">
+      <%= render 'has_many_form', ff: ff, table: :kor_exemples, partial: "exemple_fields" %>
+    </div>
+    <hr>
+    <h6>Synonymes</h6>
+      <%= render 'has_many_form', ff: ff, table: :kor_synonymes, partial: "synonyme_fields" %>
+    <hr>
+    <h6>Antonymes</h6>
+      <%= render 'has_many_form', ff: ff, table: :kor_antonymes, partial: "antonyme_fields" %>
+  <% end %>
+  <br>
+  <%= f.submit "Confirmer" %>
+<% end %>

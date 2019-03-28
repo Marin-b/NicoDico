@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_24_225018) do
+ActiveRecord::Schema.define(version: 2019_03_26_214727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 2019_03_24_225018) do
     t.index ["user_id"], name: "index_kor_nuances_on_user_id"
   end
 
+  create_table "kor_selections", force: :cascade do |t|
+    t.bigint "liste_id"
+    t.bigint "kor_nuance_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kor_nuance_id"], name: "index_kor_selections_on_kor_nuance_id"
+    t.index ["liste_id"], name: "index_kor_selections_on_liste_id"
+  end
+
   create_table "kor_synonymes", force: :cascade do |t|
     t.bigint "kor_nuance_id"
     t.string "synonyme"
@@ -70,6 +79,14 @@ ActiveRecord::Schema.define(version: 2019_03_24_225018) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "listes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["user_id"], name: "index_listes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -78,6 +95,10 @@ ActiveRecord::Schema.define(version: 2019_03_24_225018) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.string "status"
+    t.string "avatar"
+    t.text "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -87,4 +108,7 @@ ActiveRecord::Schema.define(version: 2019_03_24_225018) do
   add_foreign_key "kor_exemples", "kor_nuances"
   add_foreign_key "kor_nuances", "kor_words"
   add_foreign_key "kor_nuances", "users"
+  add_foreign_key "kor_selections", "kor_nuances"
+  add_foreign_key "kor_selections", "listes"
+  add_foreign_key "listes", "users"
 end

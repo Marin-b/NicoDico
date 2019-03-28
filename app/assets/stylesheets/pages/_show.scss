@@ -1,0 +1,96 @@
+.word-show  {
+  background-color: $blue;
+  margin: 2vh auto;
+  width: 50vw;
+  color: white;
+  height: 25vh;
+  display: flex;
+  align-items:center;
+  text-align: center;
+  border-radius: 20px 20px 0px 0px;
+  i {
+    position: relative;
+    right: 5%;
+    font-size: 40px;
+  }
+  h1 {
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+.show-wrapper {
+  text-align: center;
+}
+.nuance-box {
+  border-radius: 0px 0px 0px 0px;
+  &:last-child {
+    border-radius: 0px 0px 20px 20px;
+  }
+}
+.blue-rectangle {
+  border-radius: 0px 0px 20px 20px;
+  background-color: white;
+  width: 50vw;
+  margin: 10px auto;
+  padding: 30px;
+  display:block;
+  text-align: left;
+}
+.exemple {
+  position: absolute;
+  display:block;
+  z-index: -1;
+  transition: opacity 0.5s;
+}
+.seemore {
+  padding-top: 10px;
+  opacity: 0.7;
+  z-index: 99999;
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+    border-radius: 8px;
+  }
+}
+.hrthick {
+  border:none;
+  height: 2px;
+  margin: 25px 0px;
+  width: 100%;
+  background-color: $blue;
+}
+.nuance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  i {
+    position: relative;
+  }
+  i:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}
+.suggestions {
+  background-color: $blue;
+  width: 50vw;
+  position: relative;
+  border-radius: 20px 20px 0px 0px;
+  margin: 0 auto;
+  padding: 20px;
+  h3{
+    color: white;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .word-show {
+    width: 90%;
+  }
+  .blue-rectangle {
+    width: 90%
+  }
+  .suggestions {
+    width: 90vw;
+  }
+}

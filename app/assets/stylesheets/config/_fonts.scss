@@ -5,6 +5,27 @@
 $body-font: "Open Sans", "Helvetica", "sans-serif";
 $headers-font: "Raleway", "Helvetica", "sans-serif";
 
+
+h3 {
+  font-size: 50px;
+  color: #10255B;
+}
+h4 {
+  font-size: 40px;
+  color: #10255B;
+}
+h2 {
+  font-family: montserrat;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 80px !important;
+}
+
+.mediumsized {
+  font-weight: 400;
+}
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";

@@ -1,0 +1,55 @@
+.carnet-wrapper {
+  text-align: center;
+  div {
+    padding: 20px;
+    margin: 0 auto;
+    width: 60%;
+  }
+}
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  align-items: center;
+  div {
+    width: 40%;
+  }
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  width: 100% !important;
+  i {
+    position: static;
+    font-size: 30px;
+    &:hover {
+      color: $orange;
+    }
+  }
+}
+.new_list_form{
+
+  form{
+    display: flex;
+    width: 100%;
+  }
+
+  .form-group {
+    width: 100%;
+    input {
+      border-radius: 10px;
+    }
+  }
+
+  i {
+    position: static;
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  button {
+    border:none;
+    background-color: transparent;
+  }
+}

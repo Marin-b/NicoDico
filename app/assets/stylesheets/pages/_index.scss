@@ -1,3 +1,10 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "index_p";
+@import "show";
+@import "carnet";
+@import "new";
+
+body {
+  background-color: #e7e9ef;
+}

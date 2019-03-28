@@ -1,10 +1,18 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <h2>ND</h2>
+  <h2><%= link_to "ND", root_path %></h2>
   <i class="fas fa-bars dropdown-toggle fa-2x" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
+    <%= link_to "Home", root_path, class:"dropdown-item" %>
+    <% if current_user %>
+      <%= link_to "profile", new_user_session_path, class:"dropdown-item" %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path, class:"dropdown-item" %>
+    <% end %>
+    <%= link_to "Mon carnet", listes_path, class:"dropdown-item" %>
+    <% if current_user&.status == "admin" %>
+      <%= link_to "Contribuer", new_path, class:"dropdown-item" %>
+    <% end %>
   </div>
 </div>
 </div>
