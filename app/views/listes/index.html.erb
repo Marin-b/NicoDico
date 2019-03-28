@@ -1,0 +1,30 @@
+<div class="carnet-wrapper">
+  <div>
+    <h1 class="blue">Mon carnet</h1>
+    <h4 class="blue light">“Mon carnet” vous permet de <span class="orange">selectionner des mots</span> dans nos dictionnaires et des les organiser sous forme de liste</h4>
+  </div>
+
+  <div class="flex-around">
+    <div class="new_list_form">
+      <%= simple_form_for @list, html: { autocomplete: 'off' } do |f| %>
+        <%= f.input :name, label: false, placeholder: "Nouvelle liste" %>
+        <%= button_tag(type: 'submit') do %>
+          <i class="fas fa-plus-circle fa-2x"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="list-listes blue-rectangle">
+      <h3 class="blue"> Mes listes</h3>
+      <hr class="hrthick">
+        <% @listes.each do |liste| %>
+        <div class="flex-between">
+          <h4> <%= link_to liste.name, liste_path(liste) %></h4>
+          <%= link_to "<i class='fas fa-minus-circle'></i>".html_safe, liste_path(liste), method: :delete %>
+        </div>
+          <% unless liste == @listes.last %>
+            <hr>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>

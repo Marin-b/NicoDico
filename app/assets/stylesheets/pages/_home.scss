@@ -28,7 +28,7 @@
   margin-left: 30px;
 }
 .subtitle {
-  padding: 30px;
+  padding: 40px;
   font-style: roboto;
   font-weight: bold;
 }
@@ -42,10 +42,6 @@
   padding-top: 22px;
   border: $blue solid 1px;
   padding-bottom: 13px;
-  h2 {
-    font-family: montserrat;
-    font-weight: bold;
-  }
   &:hover{
     text-decoration: none;
   }
@@ -55,10 +51,35 @@
 }
 .btn-row {
   height: 50%;
+  display: flex;
 }
 .buttons-home {
-  height: 33vh;
+  height: 34vh;
+  width: 100%;
 }
 .opacity {
   opacity: 0.7;
+}
+.row {
+  min-width: 100%;
+  max-width: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .btn-row {
+  display: flex;
+  flex-direction: column;
+  }
+  .btn-home {
+    width: 100%;
+    min-height: 20vh;
+  }
+  .wrapper-blue {
+    height: 70vh;
+  }
+  .text-home {
+    width: 90vw;
+  }
+  .buttons-home {
+    height: auto;
+  }
 }

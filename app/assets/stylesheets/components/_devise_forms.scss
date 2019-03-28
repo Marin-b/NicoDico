@@ -1,0 +1,25 @@
+ .form-wrapper {
+  text-align: center;
+  padding: 20px;
+ }
+
+.form-box {
+  margin: 0 auto;
+  border-radius: 0px 0px 20px 20px;
+  background-color: white;
+  width: 50%;
+  padding: 20px;
+}
+.form-actions {
+  input {
+    background-color: $blue;
+    color: white;
+    width: 60%;
+    margin-bottom: 20px;
+  }
+}
+@media only screen and ( max-width: 600px ) {
+  .form-box {
+    width: 90%;
+  }
+}

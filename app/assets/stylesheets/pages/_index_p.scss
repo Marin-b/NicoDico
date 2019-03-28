@@ -1,3 +1,75 @@
 .wrapper-index {
   height: 30vh;
+  padding: 20px 0%;
+  h2 {
+    padding: 20px;
+  }
+}
+
+.light {
+  font-weight: 300;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.searchbar-wrapper {
+  text-align: center;
+  padding: 30px;
+
+  i {
+    position: static;
+  }
+
+  form{
+    display:flex;
+    margin: 0 auto;
+    width: 40%;
+    align-items: center;
+  }
+
+  .searchbar {
+    border-radius: 5px;
+    width: 100%;
+    background-color: white;
+    color: $blue;
+    font-size: 20px;
+    font-family: montserrat;
+    font-weight: 300;
+  }
+
+  button {
+    border: 0;
+    background-color: transparent;
+  }
+}
+.white-flex-wrapper {
+  display:flex;
+  .blue-rectangle {
+    border-radius: 0px 0px 20px 20px;
+    width: 40%;
+  }
+}
+@media only screen and (max-width: 715px) {
+  .searchbar-wrapper {
+    form {
+      width: 90%
+    }
+
+  }
+  .wrapper-index {
+    height: 40vh;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .white-flex-wrapper {
+  display:block;
+    .blue-rectangle {
+      width: 90%;
+      &:first-child {
+        border-radius: 0px;
+      }
+    }
+  }
 }
