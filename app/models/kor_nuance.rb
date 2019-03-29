@@ -8,4 +8,5 @@ class KorNuance < ApplicationRecord
   accepts_nested_attributes_for :hanjas, allow_destroy: true
   accepts_nested_attributes_for :kor_exemples, allow_destroy: true
   accepts_nested_attributes_for :kor_synonymes, allow_destroy: true
+  accepts_nested_attributes_for :kor_antonymes, allow_destroy: true
 end

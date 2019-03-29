@@ -1,0 +1,67 @@
+<div class="nested-fields">
+  <hr class="hrthick">
+  <div class="nuance-header-form">
+    <h5>Nuance</h5>
+    <div class="iconsActions">
+    <%= link_to_remove_association f, data: {confirm: 'Are you sure?'} do %>
+      <i class="fas fa-minus-circle fa-2x"></i>
+    <% end %>
+  </div>
+  </div>
+  <%= f.input :traduction %>
+  <%= f.input :user_id, as: :hidden, input_html: { :value => current_user.id } %>
+  <div class="flex-around">
+    <%= f.input :nature_francais %>
+    <%= f.input :nature_cible %>
+  </div>
+  <%= f.input :remarque %>
+  <%= f.input :commentaire %>
+  <hr>
+  <h6>Hanja</h6>
+  <div class="hanja-form">
+    <%= f.simple_fields_for :hanjas do |hanja| %>
+      <%= render 'hanja_fields', f: hanja %>
+    <% end %>
+    <div class="iconsActions">
+      <%= link_to_add_association f, :hanjas  do%>
+        <i class="fas fa-plus-circle fa-2x clickMe"></i>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+  <div class="exemple-form">
+    <%= f.simple_fields_for :kor_exemples do |exemple| %>
+      <%= render 'kor_exemple_fields', f: exemple %>
+    <% end %>
+    <div class="iconsActions">
+      <%= link_to_add_association f, :kor_exemples  do%>
+        <i class="fas fa-plus-circle fa-2x clickMe"></i>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+  <h6>Synonymes</h6>
+    <div class="exemple-form">
+    <%= f.simple_fields_for :kor_synonymes do |synonyme| %>
+      <%= render 'kor_synonyme_fields', f: synonyme %>
+    <% end %>
+    <div class="iconsActions">
+      <%= link_to_add_association f, :kor_synonymes  do%>
+        <i class="fas fa-plus-circle fa-2x clickMe"></i>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+  <h6>Antonymes</h6>
+<div class="exemple-form">
+    <%= f.simple_fields_for :kor_antonymes do |antonyme| %>
+      <%= render 'kor_antonyme_fields', f: antonyme %>
+    <% end %>
+    <div class="iconsActions">
+      <%= link_to_add_association f, :kor_antonymes  do%>
+        <i class="fas fa-plus-circle fa-2x clickMe"></i>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+</div>
