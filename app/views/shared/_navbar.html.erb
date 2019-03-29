@@ -11,7 +11,7 @@
     <% end %>
     <%= link_to "Mon carnet", listes_path, class:"dropdown-item" %>
     <% if current_user&.status == "admin" %>
-      <%= link_to "Contribuer", new_path, class:"dropdown-item" %>
+      <%= link_to "Contribuer", new_kor_word_path, class:"dropdown-item" %>
     <% end %>
   </div>
 </div>

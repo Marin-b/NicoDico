@@ -12,6 +12,7 @@
             [
             <% nuance.hanjas.each do |hanja| %>
               <%= hanja.hanja %>
+              <%= "," unless hanja == nuance.hanjas.last %>
             <% end %>
             ]
           </h3>
@@ -27,17 +28,19 @@
       <hr>
       <h4 class="light"><%= nuance.commentaire %>.</h4>
       <hr>
-      <% nuance.kor_exemples.each do |exemple| %>
-        <div class="exemple">
-          <h5 class="mediumsized blue">
-            <%= exemple.exemple_cible %>
-          </h5>
-          <h5 class="blue mediumsized">
-             <%= exemple.exemple_traduction %>
-          </h5>
-        </div>
-      <% end %>
-      <h5 class="blue light seemore">Voir plus d'exemples</h5>
+      <div class="exemple-box">
+        <% nuance.kor_exemples.each do |exemple| %>
+          <div class="exemple">
+            <h5 class="mediumsized blue">
+              <%= exemple.exemple_cible %>
+            </h5>
+            <h5 class="blue mediumsized">
+               <%= exemple.exemple_traduction %>
+            </h5>
+          </div>
+        <% end %>
+        <h5 class="blue light seemore">Voir plus d'exemples</h5>
+      </div>
       <hr>
       <h5 class="light blue"><%= nuance.remarque %></h5>
       <hr class="hrthick">

@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   get 'new', to: 'contrib#choose'
-  resources :kor_word, :path => "coréen"
-  post 'search' => 'kor_word#search'
+  resources :kor_words, :path => "coréen"
+  post 'search' => 'kor_words#search'
   get 'carnet' => 'carnet#index'
   resources :listes, only: [:index, :show, :create, :update, :destroy, :edit]
+  post 'new_kor_word' => 'contrib#new_kor_word'
 end
