@@ -9,7 +9,9 @@
       <div class="align-center">
         <span style="display:flex;"class="bold">
           <h3 class="hanjas blue">
-            [<% nuance.hanjas.each do |hanja| %><%=hanja.hanja%><%= "," unless hanja == nuance.hanjas.last %><% end %>]
+            <% unless nuance.hanjas.first == "" %>
+              [<% nuance.hanjas.each do |hanja| %><%=hanja.hanja%><%= "," unless hanja == nuance.hanjas.last %><% end %>]
+            <% end %>
           </h3>
           <h3 class="blue">  <%= @word.word %></h3>
         </span>
@@ -21,15 +23,23 @@
       <span style ="display:flex; justify-content: space-between; width: 80%;">
         <h5 class="light blue"><%= "(#{nuance.nature_francais} | #{nuance.nature_cible})" %></h5>
       <span style="display:flex">
-        <% nuance.kor_registres.each do |registre| %>
-          <h5 class="light blue"><%= registre.registre %> </h5>
-          <%= "," unless registre == nuance.kor_registres.last  %>
+        <% unless nuance.kor_registres.first == "" %>
+          <% nuance.kor_registres.each do |registre| %>
+            <h5 class="light blue"><%= registre.registre %> </h5>
+            <%= "," unless registre == nuance.kor_registres.last  %>
+          <% end %>
         <% end %>
       </span>
       </span>
       <h3 class="mediumsized"><i class="fas fa-level-up-alt fa-rotate-90" style="position: static; margin-right: 20px;"></i><%= nuance.traduction %></h3>
-      <hr>
-      <h5 class="light blue"><%= nuance.commentaire %>.</h5>
+      <% unless nuance.remarque == "" %>
+        <hr>
+        <h5 class="light blue"><%= nuance.remarque %></h5>
+      <% end %>
+      <% unless nuance.commentaire == "" %>
+        <hr>
+        <h5 class="light blue"><%= nuance.commentaire %>.</h5>
+      <% end %>
       <hr>
       <div class="exemple-box">
         <% nuance.kor_exemples.each do |exemple| %>
@@ -44,39 +54,39 @@
         <% end %>
         <h5 class="blue light seemore">Voir plus d'exemples</h5>
       </div>
-      <hr>
-      <h5 class="light blue"><%= nuance.remarque %></h5>
-      <hr class="hrthick">
-      <div>
+      <% if nuance.kor_synonymes.length > 0 && nuance.kor_antonymes.length > 0%>
+        <hr class="hrthick">
         <% if nuance.kor_synonymes.length > 0 %>
-          <h4 class="mediumsized">Ces synonymes pourraient vous intéresser:</h4>
-          <% nuance.kor_synonymes.each do |synonyme| %>
-            <h5 class="blue light syno">
-              <%= synonyme.synonyme %>
-              <% if synonyme == nuance.kor_synonymes[-1] %>
-                .
-              <% else %>
-                ,
-              <% end %>
-            </h5>
-          <% end %>
-        </div>
+          <div>
+            <h4 class="mediumsized">Ces synonymes pourraient vous intéresser:</h4>
+            <% nuance.kor_synonymes.each do |synonyme| %>
+              <h5 class="blue light syno">
+                <% if synonyme == nuance.kor_synonymes[-1] %>
+                  <%= "#{synonyme.synonyme}"%>
+                <% else %>
+                  <%= "#{synonyme.synonyme},"%>
+                <% end %>
+              </h5>
+            <% end %>
+          </div>
+        <% end %>
         <hr>
-        <div>
-          <h4 class="mediumsized">Ces antonymes pourraient vous intéresser:</h4>
-          <% nuance.kor_antonymes.each do |antonyme| %>
-            <h5 class="light blue anto">
-              <%= antonyme.antonyme %>
-              <% if antonyme == nuance.kor_antonymes[-1] %>
-                .
-              <% else %>
-                ,
-              <% end %>
-            </h5>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+        <% if nuance.kor_antonymes.length > 0 %>
+          <div>
+            <h4 class="mediumsized">Ces antonymes pourraient vous intéresser:</h4>
+            <% nuance.kor_antonymes.each do |antonyme| %>
+              <h5 class="light blue anto">
+                <% if antonyme == nuance.kor_antonymes[-1] %>
+                  <%= "#{antonyme.antonyme}"%>
+                <% else %>
+                  <%= "#{antonyme.antonyme},"%>
+                <% end %>
+              </h5>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
   <div class="suggestions">
      <h3>Suggerer un mot | faire part d'une erreur</h3>

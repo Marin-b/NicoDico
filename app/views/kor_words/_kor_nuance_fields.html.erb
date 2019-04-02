@@ -6,34 +6,12 @@
     <% if (current_page?(new_kor_word_path)) %>
       <%= link_to_remove_association f, data: {confirm: 'Are you sure?'} do %>
         <h5>Supprimer nuance</h5>
-
       <% end %>
     <% else %>
       <br>
     <% end %>
   </div>
   </div>
-  <%= f.input :traduction %>
-  <%= f.input :user_id, as: :hidden, input_html: { :value => current_user.id } %>
-  <div class="flex-around">
-    <%= f.input :nature_francais, collection: ["Nom commun", "Verbe transitif", "Verbe intransitif", "Nom propre", "Préposition", "Suffixe", "Adjectif", "Pronom", "Conjonction", "Particule" ] %>
-    <%= f.input :nature_cible, collection: ["명사", "타동사", "자동사", "고유명사", "전치사", "접미사", "형용사", "대명사", "접속사", "조사" ], input_html: {readonly: :true} %>
-  </div>
-  <%= f.input :remarque %>
-  <%= f.input :commentaire %>
-  <hr>
-  <h6>Registres</h6>
-   <div class="exemple-form">
-    <%= f.simple_fields_for :kor_registres do |registre| %>
-      <%= render 'kor_words/kor_registre_fields', f: registre %>
-    <% end %>
-    <div class="iconsActions">
-      <%= link_to_add_association f, :kor_registres, partial: "kor_words/kor_registre_fields" do%>
-        <i class="fas fa-plus-circle fa-2x clickMe"></i>
-      <% end %>
-    </div>
-  </div>
-  <hr>
   <h6>Hanja</h6>
   <div class="hanja-form">
     <%= f.simple_fields_for :hanjas do |hanja| %>
@@ -46,6 +24,28 @@
     </div>
   </div>
   <hr>
+  <div class="flex-around">
+    <%= f.input :nature_francais, collection: ["Nom commun", "Verbe transitif", "Verbe intransitif", "Nom propre", "Préposition", "Suffixe", "Adjectif", "Pronom", "Conjonction", "Particule" ] %>
+    <%= f.input :nature_cible, collection: ["명사", "타동사", "자동사", "고유명사", "전치사", "접미사", "형용사", "대명사", "접속사", "조사" ], input_html: {readonly: :true} %>
+  </div>
+  <hr>
+  <%= f.input :traduction %>
+  <hr>
+  <h6>Registres</h6>
+  <div class="exemple-form">
+    <%= f.simple_fields_for :kor_registres do |registre| %>
+      <%= render 'kor_words/kor_registre_fields', f: registre %>
+    <% end %>
+    <div class="iconsActions">
+      <%= link_to_add_association f, :kor_registres, partial: "kor_words/kor_registre_fields" do%>
+        <i class="fas fa-plus-circle fa-2x clickMe"></i>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+  <%= f.input :user_id, as: :hidden, input_html: { :value => current_user.id } %>
+  <%= f.input :remarque %>
+  <hr>
   <div class="exemple-form">
     <%= f.simple_fields_for :kor_exemples do |exemple| %>
       <%= render 'kor_words/kor_exemple_fields', f: exemple %>
@@ -56,6 +56,8 @@
       <% end %>
     </div>
   </div>
+  <hr>
+  <%= f.input :commentaire %>
   <hr>
   <h6>Synonymes</h6>
     <div class="exemple-form">
