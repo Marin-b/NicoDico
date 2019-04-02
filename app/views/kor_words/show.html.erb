@@ -25,7 +25,7 @@
         <h5 class="light blue"><%= "(#{nuance.nature_francais} | #{nuance.nature_cible})" %></h5>
       <span style="display:flex">
         <% kor_reg = nuance.kor_registres %>
-        <% unless kor_reg.first&.registre == "" ||  %>
+        <% unless kor_reg.first&.registre == "" || kor_reg.first == nil %>
           <% kor_reg.each do |registre| %>
             <h5 class="light blue"><%= registre.registre %> </h5>
             <%= "," unless registre == kor_reg.last  %>
@@ -58,9 +58,11 @@
       </div>
       <% kor_syn = nuance.kor_synonymes %>
       <% kor_ant = nuance.kor_antonymes %>
-      <% if kor_syn.first.synonyme != "" && kor_ant.first.antonyme != %>
+      <% check_syn =  kor_syn.first&.synonyme != "" && kor_syn.first != nil  %>
+      <% check_ant =  kor_ant.first&.antonyme != "" && kor_ant.first != nil %>
+      <% if check_syn || check_ant %>
         <hr class="hrthick">
-        <% if kor_syn.first.synonyme != "" %>
+        <% if check_syn %>
           <div>
             <h4 class="mediumsized">Ces synonymes pourraient vous intéresser:</h4>
             <% kor_syn.each do |synonyme| %>
@@ -75,7 +77,7 @@
           </div>
         <% end %>
         <hr>
-        <% if kor_ant.first.synonyme != "" %>
+        <% if check_ant %>
           <div>
             <h4 class="mediumsized">Ces antonymes pourraient vous intéresser:</h4>
             <% kor_ant.each do |antonyme| %>
