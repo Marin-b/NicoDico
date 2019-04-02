@@ -29,6 +29,15 @@ exemple2 = KorExemple.create(
   exemple_cible: "한국에는 산이 가득 차다.2",
   exemple_traduction: "La Corée du Sud est remplie de montagnes2")
 
+registre1 = KorRegistre.create(
+  kor_nuance_id: nuance1.id,
+  registre: "soutenu"
+  )
+
+registre2 = KorRegistre.create(
+  kor_nuance_id: nuance1.id,
+  registre: "littéraire"
+  )
 hanja1 = Hanja.create(
   kor_nuance_id: nuance1.id,
   hanja: "韓國")

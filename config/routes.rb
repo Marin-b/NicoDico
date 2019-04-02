@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :kor_words, :path => "coréen"
   post 'search' => 'kor_words#search'
   get 'carnet' => 'carnet#index'
+  resources :kor_nuances, only: [:new, :create, :destroy, :edit, :update]
   resources :listes, only: [:index, :show, :create, :update, :destroy, :edit]
   post 'new_kor_word' => 'contrib#new_kor_word'
 end

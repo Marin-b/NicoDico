@@ -1,7 +1,7 @@
 .word-show  {
   background-color: $blue;
   margin: 2vh auto;
-  width: 50vw;
+  width: 60vw;
   color: white;
   height: 25vh;
   display: flex;
@@ -30,17 +30,23 @@
 .blue-rectangle {
   border-radius: 0px 0px 20px 20px;
   background-color: white;
-  width: 50vw;
+  width: 60vw;
   margin: 10px auto;
   padding: 30px;
   display:block;
   text-align: left;
 }
-.exemple {
+.exempleCycle {
+  visibility: hidden;
+  opacity: 0;
   position: absolute;
-  display:block;
-  z-index: -1;
-  transition: opacity 0.5s;
+  transition: opacity 1s;
+}
+
+.onScreen {
+  visibility: visible;
+  position: relative;
+  opacity: 1;
 }
 .seemore {
   padding-top: 10px;
@@ -83,6 +89,7 @@
     color: white;
   }
 }
+
 @media only screen and (max-width: 900px) {
   .word-show {
     width: 90%;

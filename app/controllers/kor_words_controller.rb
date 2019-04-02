@@ -1,4 +1,5 @@
 class KorWordsController < ApplicationController
+  before_action :admin_check, only: :new
   def index
   end
 
@@ -24,6 +25,7 @@ class KorWordsController < ApplicationController
     @new_nuance.kor_exemples.build
     @new_nuance.kor_antonymes.build
     @new_nuance.kor_synonymes.build
+    @new_nuance.kor_registres.build
   end
 
   def create
@@ -33,6 +35,10 @@ class KorWordsController < ApplicationController
   end
 
   private
+
+  def admin_check
+    redirect_to root_path unless current_user.status == "admin"
+  end
 
   def set_params
     params.require(:kor_word).permit(
@@ -47,10 +53,8 @@ class KorWordsController < ApplicationController
         hanjas_attributes: [:hanja],
         kor_exemples_attributes: [:exemple_cible, :exemple_traduction],
         kor_synonymes_attributes: [:synonyme],
-        kor_antonymes_attributes: [:antonyme] ])
+        kor_antonymes_attributes: [:antonyme]
+      ]
+    )
   end
 end
-
-
-
-

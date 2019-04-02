@@ -3,27 +3,44 @@
   <div class="nuance-header-form">
     <h5>Nuance</h5>
     <div class="iconsActions">
-    <%= link_to_remove_association f, data: {confirm: 'Are you sure?'} do %>
-      <i class="fas fa-minus-circle fa-2x"></i>
+    <% if (current_page?(new_kor_word_path)) %>
+      <%= link_to_remove_association f, data: {confirm: 'Are you sure?'} do %>
+        <h5>Supprimer nuance</h5>
+
+      <% end %>
+    <% else %>
+      <br>
     <% end %>
   </div>
   </div>
   <%= f.input :traduction %>
   <%= f.input :user_id, as: :hidden, input_html: { :value => current_user.id } %>
   <div class="flex-around">
-    <%= f.input :nature_francais %>
-    <%= f.input :nature_cible %>
+    <%= f.input :nature_francais, collection: ["Nom commun", "Verbe transitif", "Verbe intransitif", "Nom propre", "Préposition", "Suffixe", "Adjectif", "Pronom", "Conjonction", "Particule" ] %>
+    <%= f.input :nature_cible, collection: ["명사", "타동사", "자동사", "고유명사", "전치사", "접미사", "형용사", "대명사", "접속사", "조사" ], input_html: {readonly: :true} %>
   </div>
   <%= f.input :remarque %>
   <%= f.input :commentaire %>
   <hr>
+  <h6>Registres</h6>
+   <div class="exemple-form">
+    <%= f.simple_fields_for :kor_registres do |registre| %>
+      <%= render 'kor_words/kor_registre_fields', f: registre %>
+    <% end %>
+    <div class="iconsActions">
+      <%= link_to_add_association f, :kor_registres, partial: "kor_words/kor_registre_fields" do%>
+        <i class="fas fa-plus-circle fa-2x clickMe"></i>
+      <% end %>
+    </div>
+  </div>
+  <hr>
   <h6>Hanja</h6>
   <div class="hanja-form">
     <%= f.simple_fields_for :hanjas do |hanja| %>
-      <%= render 'hanja_fields', f: hanja %>
+      <%= render 'kor_words/hanja_fields', f: hanja %>
     <% end %>
     <div class="iconsActions">
-      <%= link_to_add_association f, :hanjas  do%>
+      <%= link_to_add_association f, :hanjas, partial: "kor_words/hanja_fields"  do%>
         <i class="fas fa-plus-circle fa-2x clickMe"></i>
       <% end %>
     </div>
@@ -31,10 +48,10 @@
   <hr>
   <div class="exemple-form">
     <%= f.simple_fields_for :kor_exemples do |exemple| %>
-      <%= render 'kor_exemple_fields', f: exemple %>
+      <%= render 'kor_words/kor_exemple_fields', f: exemple %>
     <% end %>
     <div class="iconsActions">
-      <%= link_to_add_association f, :kor_exemples  do%>
+      <%= link_to_add_association f, :kor_exemples, partial: "kor_words/kor_exemple_fields"  do%>
         <i class="fas fa-plus-circle fa-2x clickMe"></i>
       <% end %>
     </div>
@@ -43,10 +60,10 @@
   <h6>Synonymes</h6>
     <div class="exemple-form">
     <%= f.simple_fields_for :kor_synonymes do |synonyme| %>
-      <%= render 'kor_synonyme_fields', f: synonyme %>
+      <%= render 'kor_words/kor_synonyme_fields', f: synonyme %>
     <% end %>
     <div class="iconsActions">
-      <%= link_to_add_association f, :kor_synonymes  do%>
+      <%= link_to_add_association f, :kor_synonymes, partial: "kor_words/kor_synonyme_fields"  do%>
         <i class="fas fa-plus-circle fa-2x clickMe"></i>
       <% end %>
     </div>
@@ -55,10 +72,10 @@
   <h6>Antonymes</h6>
 <div class="exemple-form">
     <%= f.simple_fields_for :kor_antonymes do |antonyme| %>
-      <%= render 'kor_antonyme_fields', f: antonyme %>
+      <%= render 'kor_words/kor_antonyme_fields', f: antonyme %>
     <% end %>
     <div class="iconsActions">
-      <%= link_to_add_association f, :kor_antonymes  do%>
+      <%= link_to_add_association f, :kor_antonymes, partial: "kor_words/kor_antonyme_fields"  do%>
         <i class="fas fa-plus-circle fa-2x clickMe"></i>
       <% end %>
     </div>

@@ -1,41 +1,30 @@
-const removeHasMany = () => {
-  const container = event.target.parentNode.parentNode;
-  const hasManyFields = container.querySelectorAll('.nested-fields');
-  if (hasManyFields.length > 0) {
-    container.removeChild(hasManyFields[hasManyFields.length - 1]);
-  }
+const findSelectedElement = (arr) => {
+  const natureSelectors = document.querySelectorAll("select")
+  let ind = 0
+  natureSelectors.forEach((selector) => {
+    if (selector === event.target) {
+      natureSelectors[ind + 1].selectedIndex = event.target.selectedIndex
+    } else {
+      ind += 1
+    }
+  })
 }
 
-const clickThem = () => {
-  const clickEm = document.querySelectorAll('.clickMe')
-  clickEm.forEach((btn) => { btn.click() });
-}
-const addEvents = () => {
-  const lessHasMany = document.querySelectorAll('.lessHasMany');
-  lessHasMany.forEach((btn) => {
-    btn.addEventListener("click", (event) =>{
-      removeHasMany(event);
-    });
-  });
-}
-const addRemove = () => {
-  document.querySelectorAll('.lessHasManyNuance').forEach((btn)=> {
-      btn.addEventListener("click", (event) => {
-        event.target.parentNode.remove();
-    })
-  });
+const initSelectors = () => {
+  const natureSelectors = document.querySelectorAll("select")
+  natureSelectors[natureSelectors.length - 1].style.pointerEvents = "none"
+  natureSelectors.forEach((selector) => {
+    selector.addEventListener("change", findSelectedElement);
+  })
 }
 
 const dynamicForm = () => {
   const addNuance = document.querySelector('.addNuance')
   if (addNuance) {
+    initSelectors();
     addNuance.addEventListener("click", (event) => {
-      setTimeout(addEvents, 100)
-      addRemove();
+      setTimeout(initSelectors, 500);
     })
-    addEvents();
-    clickThem();
-    setTimeout(addRemove(), 100);
   }
 }
 

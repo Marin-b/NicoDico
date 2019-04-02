@@ -8,7 +8,7 @@
   <div class="blue-rectangle">
     <div class="nuancemot">
       <h4 class="blue">Ajouter un mot</h4>
-      <h4 class="blue">Ajouter une nuance</h4>
+      <h4 class="blue"><%= link_to "Ajouter une nuance", new_kor_nuance_path %></h4>
     </div>
     <hr class="hrthick">
     <div class="kor-form">
@@ -18,14 +18,14 @@
         <%= f.simple_fields_for :kor_nuances do |nuance| %>
           <%= render 'kor_nuance_fields', f: nuance %>
           <div class="iconsActions">
-            <%= link_to_add_association f, :kor_nuances  do%>
-              <i class="fas fa-plus-circle fa-2x clickMe"></i>
+            <%= link_to_add_association f, :kor_nuances do%>
+              <h5 class="addNuance">Ajouter une nuance</h5>
             <% end %>
           </div>
         <% end %>
         </div>
         </div>
-        <%= f.submit "Confirmer" %>
+        <%= f.submit "Confirmer", class: "submitkor" %>
       <% end %>
     </div>
   </div>

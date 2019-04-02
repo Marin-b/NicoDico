@@ -6,31 +6,34 @@
   </div>
   <% @word.kor_nuances.each do |nuance| %>
     <div class="blue-rectangle nuance-box">
-      <div class="nuance-header">
-        <span style="display: flex" class="bold">
+      <div class="align-center">
+        <span style="display:flex;"class="bold">
           <h3 class="hanjas blue">
-            [
-            <% nuance.hanjas.each do |hanja| %>
-              <%= hanja.hanja %>
-              <%= "," unless hanja == nuance.hanjas.last %>
-            <% end %>
-            ]
+            [<% nuance.hanjas.each do |hanja| %><%=hanja.hanja%><%= "," unless hanja == nuance.hanjas.last %><% end %>]
           </h3>
-          <h3 class="blue"><%= @word.word %></h3>
-          <h3 class="light" style="padding-left: 20px;"><%= "(#{nuance.nature_francais} | #{nuance.nature_cible})" %></h3>
+          <h3 class="blue">  <%= @word.word %></h3>
         </span>
         <% if nuance.image_url %>
           <i class="fas fa-image fa-2x nuance-image">
           </i>
         <% end %>
       </div>
-      <h3 class="mediumsized"> => <%= nuance.traduction %></h3>
+      <span style ="display:flex; justify-content: space-between; width: 80%;">
+        <h5 class="light blue"><%= "(#{nuance.nature_francais} | #{nuance.nature_cible})" %></h5>
+      <span style="display:flex">
+        <% nuance.kor_registres.each do |registre| %>
+          <h5 class="light blue"><%= registre.registre %> </h5>
+          <%= "," unless registre == nuance.kor_registres.last  %>
+        <% end %>
+      </span>
+      </span>
+      <h3 class="mediumsized"><i class="fas fa-level-up-alt fa-rotate-90" style="position: static; margin-right: 20px;"></i><%= nuance.traduction %></h3>
       <hr>
-      <h4 class="light"><%= nuance.commentaire %>.</h4>
+      <h5 class="light blue"><%= nuance.commentaire %>.</h5>
       <hr>
       <div class="exemple-box">
         <% nuance.kor_exemples.each do |exemple| %>
-          <div class="exemple">
+          <div class="exempleCycle">
             <h5 class="mediumsized blue">
               <%= exemple.exemple_cible %>
             </h5>
@@ -45,33 +48,35 @@
       <h5 class="light blue"><%= nuance.remarque %></h5>
       <hr class="hrthick">
       <div>
-        <h4 class="mediumsized">Ces synonymes pourraient vous intéresser:</h4>
-        <% nuance.kor_synonymes.each do |synonyme| %>
-          <h5 class="blue light syno">
-            <%= synonyme.synonyme %>
-            <% if synonyme == nuance.kor_synonymes[-1] %>
-              .
-            <% else %>
-              ,
-            <% end %>
-          </h5>
-        <% end %>
+        <% if nuance.kor_synonymes.length > 0 %>
+          <h4 class="mediumsized">Ces synonymes pourraient vous intéresser:</h4>
+          <% nuance.kor_synonymes.each do |synonyme| %>
+            <h5 class="blue light syno">
+              <%= synonyme.synonyme %>
+              <% if synonyme == nuance.kor_synonymes[-1] %>
+                .
+              <% else %>
+                ,
+              <% end %>
+            </h5>
+          <% end %>
+        </div>
+        <hr>
+        <div>
+          <h4 class="mediumsized">Ces antonymes pourraient vous intéresser:</h4>
+          <% nuance.kor_antonymes.each do |antonyme| %>
+            <h5 class="light blue anto">
+              <%= antonyme.antonyme %>
+              <% if antonyme == nuance.kor_antonymes[-1] %>
+                .
+              <% else %>
+                ,
+              <% end %>
+            </h5>
+          <% end %>
+        </div>
       </div>
-      <hr>
-      <div>
-        <h4 class="mediumsized">Ces antonymes pourraient vous intéresser:</h4>
-        <% nuance.kor_antonymes.each do |antonyme| %>
-          <h5 class="light blue anto">
-            <%= antonyme.antonyme %>
-            <% if antonyme == nuance.kor_antonymes[-1] %>
-              .
-            <% else %>
-              ,
-            <% end %>
-          </h5>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
   <div class="suggestions">
      <h3>Suggerer un mot | faire part d'une erreur</h3>

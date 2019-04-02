@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_160110) do
+ActiveRecord::Schema.define(version: 2019_03_30_145144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2019_03_28_160110) do
     t.datetime "updated_at", null: false
     t.index ["kor_word_id"], name: "index_kor_nuances_on_kor_word_id"
     t.index ["user_id"], name: "index_kor_nuances_on_user_id"
+  end
+
+  create_table "kor_registres", force: :cascade do |t|
+    t.string "registre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "kor_nuance_id"
+    t.index ["kor_nuance_id"], name: "index_kor_registres_on_kor_nuance_id"
   end
 
   create_table "kor_selections", force: :cascade do |t|
@@ -108,6 +116,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_160110) do
   add_foreign_key "kor_exemples", "kor_nuances"
   add_foreign_key "kor_nuances", "kor_words"
   add_foreign_key "kor_nuances", "users"
+  add_foreign_key "kor_registres", "kor_nuances"
   add_foreign_key "kor_selections", "kor_nuances"
   add_foreign_key "kor_selections", "listes"
   add_foreign_key "listes", "users"
