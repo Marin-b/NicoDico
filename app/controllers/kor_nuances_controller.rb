@@ -30,7 +30,9 @@ class KorNuancesController < ApplicationController
         hanjas_attributes: [:hanja],
         kor_exemples_attributes: [:exemple_cible, :exemple_traduction],
         kor_synonymes_attributes: [:synonyme],
-        kor_antonymes_attributes: [:antonyme]
+        kor_antonymes_attributes: [:antonyme],
+        kor_registres_attributes: [:registre]
+
     )
   end
 end

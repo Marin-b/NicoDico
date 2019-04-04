@@ -10,89 +10,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_30_145144) do
+ActiveRecord::Schema.define(version: 2019_04_03_170632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "hanjas", force: :cascade do |t|
-    t.bigint "kor_nuance_id"
-    t.string "hanja"
+  create_table "antonymes", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.string "anto"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["kor_nuance_id"], name: "index_hanjas_on_kor_nuance_id"
+    t.index ["nuance_id"], name: "index_antonymes_on_nuance_id"
   end
 
-  create_table "kor_antonymes", force: :cascade do |t|
-    t.bigint "kor_nuance_id"
-    t.string "antonyme"
+  create_table "exemples", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.string "exemple_fr"
+    t.string "exemple_cb"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["kor_nuance_id"], name: "index_kor_antonymes_on_kor_nuance_id"
-  end
-
-  create_table "kor_exemples", force: :cascade do |t|
-    t.bigint "kor_nuance_id"
-    t.text "exemple_cible"
-    t.text "exemple_traduction"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["kor_nuance_id"], name: "index_kor_exemples_on_kor_nuance_id"
-  end
-
-  create_table "kor_nuances", force: :cascade do |t|
-    t.bigint "kor_word_id"
-    t.bigint "user_id"
-    t.string "nature_francais"
-    t.string "nature_cible"
-    t.string "traduction"
-    t.text "commentaire"
-    t.string "remarque"
-    t.string "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["kor_word_id"], name: "index_kor_nuances_on_kor_word_id"
-    t.index ["user_id"], name: "index_kor_nuances_on_user_id"
-  end
-
-  create_table "kor_registres", force: :cascade do |t|
-    t.string "registre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "kor_nuance_id"
-    t.index ["kor_nuance_id"], name: "index_kor_registres_on_kor_nuance_id"
-  end
-
-  create_table "kor_selections", force: :cascade do |t|
-    t.bigint "liste_id"
-    t.bigint "kor_nuance_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["kor_nuance_id"], name: "index_kor_selections_on_kor_nuance_id"
-    t.index ["liste_id"], name: "index_kor_selections_on_liste_id"
-  end
-
-  create_table "kor_synonymes", force: :cascade do |t|
-    t.bigint "kor_nuance_id"
-    t.string "synonyme"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["kor_nuance_id"], name: "index_kor_synonymes_on_kor_nuance_id"
-  end
-
-  create_table "kor_words", force: :cascade do |t|
-    t.string "word"
-    t.integer "click", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["nuance_id"], name: "index_exemples_on_nuance_id"
   end
 
   create_table "listes", force: :cascade do |t|
-    t.bigint "user_id"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_listes_on_user_id"
+  end
+
+  create_table "nuances", force: :cascade do |t|
+    t.bigint "word_id"
+    t.bigint "user_id"
+    t.string "nature_fr"
+    t.string "nature_cb"
+    t.text "commentaire"
+    t.string "remarque"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_nuances_on_user_id"
+    t.index ["word_id"], name: "index_nuances_on_word_id"
+  end
+
+  create_table "registres", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.string "reg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nuance_id"], name: "index_registres_on_nuance_id"
+  end
+
+  create_table "selections", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.bigint "liste_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["liste_id"], name: "index_selections_on_liste_id"
+    t.index ["nuance_id"], name: "index_selections_on_nuance_id"
+  end
+
+  create_table "specials", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.string "char"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nuance_id"], name: "index_specials_on_nuance_id"
+  end
+
+  create_table "synonymes", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.string "syno"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nuance_id"], name: "index_synonymes_on_nuance_id"
+  end
+
+  create_table "traductions", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.string "trad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nuance_id"], name: "index_traductions_on_nuance_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,23 +100,37 @@ ActiveRecord::Schema.define(version: 2019_03_30_145144) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "username"
     t.string "status"
-    t.string "avatar"
-    t.text "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "hanjas", "kor_nuances"
-  add_foreign_key "kor_antonymes", "kor_nuances"
-  add_foreign_key "kor_exemples", "kor_nuances"
-  add_foreign_key "kor_nuances", "kor_words"
-  add_foreign_key "kor_nuances", "users"
-  add_foreign_key "kor_registres", "kor_nuances"
-  add_foreign_key "kor_selections", "kor_nuances"
-  add_foreign_key "kor_selections", "listes"
+  create_table "variantes", force: :cascade do |t|
+    t.bigint "nuance_id"
+    t.string "var"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nuance_id"], name: "index_variantes_on_nuance_id"
+  end
+
+  create_table "words", force: :cascade do |t|
+    t.string "word"
+    t.integer "click", default: 0
+    t.integer "dict"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "antonymes", "nuances"
+  add_foreign_key "exemples", "nuances"
   add_foreign_key "listes", "users"
+  add_foreign_key "nuances", "users"
+  add_foreign_key "nuances", "words"
+  add_foreign_key "registres", "nuances"
+  add_foreign_key "selections", "listes"
+  add_foreign_key "selections", "nuances"
+  add_foreign_key "specials", "nuances"
+  add_foreign_key "synonymes", "nuances"
+  add_foreign_key "traductions", "nuances"
+  add_foreign_key "variantes", "nuances"
 end

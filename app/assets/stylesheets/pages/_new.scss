@@ -3,6 +3,9 @@
     h4 {
       color: white;
       margin: 10px;
+      a {
+        color: white;
+      }
     }
   }
   .word-show {
@@ -33,9 +36,6 @@
   }
 }
 .iconsActions {
-  i {
-    position: static;
-  }
   width: 100%;
 }
 .hanja-form {

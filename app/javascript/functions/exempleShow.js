@@ -15,6 +15,13 @@ const findElementOnScreen = () => {
     }
   })
 }
+const hideIfOne = (btn) => {
+  const container = btn.parentNode
+  const exempleLength = container.querySelectorAll(".exempleCycle").length
+  if (exempleLength <= 1) {
+    btn.classList.add("exempleCycle")
+  }
+}
 
 const initExemples = (btn) => {
   const container = btn.parentNode
@@ -30,6 +37,7 @@ const exempleShow = () => {
       btn.addEventListener("click", (event) => {
         findElementOnScreen();
       });
+      hideIfOne(btn);
     });
   };
 };

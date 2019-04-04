@@ -1,0 +1,21 @@
+<div class="carnet-wrapper">
+  <h2><%= @liste.name %></h2>
+  <div class="flexbox">
+    <div class="list-listes">
+      <% @liste.selections.each do |selection| %>
+        <% nuance = Nuance.find(selection.nuance_id) %>
+        <div class="flex-between listlist">
+          <h4>
+            <%= nuance.traductions.first.trad %>
+          </h4>
+          <h4>
+            <%= Word.find(nuance.word_id).word %>
+          </h4>
+        </div>
+      <% end %>
+    </div>
+    <div class="liste-nuance">
+
+    </div>
+  </div>
+</div>

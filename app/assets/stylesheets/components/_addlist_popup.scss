@@ -1,0 +1,19 @@
+.addlist_popup {
+  width: 30vw;
+  background: white;
+  z-index: -1;
+  padding: 20px;
+  border:3px solid  $blue;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  text-align: center;
+  display: none;
+  top: 10px;
+  left: 15vw;
+}
+
+.showPopup {
+  z-index : 2;
+  display: block;
+}
+

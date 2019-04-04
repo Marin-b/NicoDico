@@ -1,24 +1,17 @@
 <div class="new-wrapper">
-  <div class="word-show JSmedaddy">
-    <h4>Japonais</h4>
-    <h4>Coréen</h4>
-    <h4>Chinois-s.</h4>
-    <h4>Chinois-t.</h4>
-  </div>
+  <%= render 'shared/contrib_header_pick_language' %>
   <div class="blue-rectangle">
-    <div class="nuancemot">
-      <h4 class="blue">Ajouter un mot</h4>
-      <h4 class="blue"><%= link_to "Ajouter une nuance", new_kor_nuance_path %></h4>
-    </div>
+    <%= render 'edit_kor_navbar' %>
     <hr class="hrthick">
     <div class="kor-form">
-      <%= simple_form_for @new_word do |f| %>
+      <%= simple_form_for @new_word, url: kor_words_path,
+                                     method: "post" do |f| %>
         <%= f.input :word %>
         <div class="kor-nuances">
-        <%= f.simple_fields_for :kor_nuances do |nuance| %>
-          <%= render 'kor_nuance_fields', f: nuance %>
+        <%= f.simple_fields_for :nuances do |nuance| %>
+          <%= render 'nuance_fields', f: nuance %>
           <div class="iconsActions">
-            <%= link_to_add_association f, :kor_nuances do%>
+            <%= link_to_add_association f, :nuances do%>
               <h5 class="addNuance">Ajouter une nuance</h5>
             <% end %>
           </div>

@@ -18,8 +18,8 @@
   text-align: center;
   padding: 30px;
 
-  i {
-    position: static;
+  .fas {
+    margin-right: 20px !important;
   }
 
   form{
@@ -49,6 +49,9 @@
   .blue-rectangle {
     border-radius: 0px 0px 20px 20px;
     width: 40%;
+    &:first-child {
+      max-height: 200px;
+    }
   }
 }
 @media only screen and (max-width: 715px) {
@@ -57,9 +60,6 @@
       width: 90%
     }
 
-  }
-  .wrapper-index {
-    height: 40vh;
   }
 }
 @media only screen and (max-width: 500px) {
@@ -71,5 +71,8 @@
         border-radius: 0px;
       }
     }
+  }
+  .wrapper-index {
+    height: 40vh;
   }
 }

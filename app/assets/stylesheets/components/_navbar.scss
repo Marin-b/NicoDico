@@ -14,14 +14,14 @@
   a:hover {
     text-decoration:none;
   }
-}
-
  i {
   position: absolute;
   right: 50px;
   color: $blue;
   border: 0;
  }
+}
+
 .dropdown-toggle::after {
     display:none;
 }

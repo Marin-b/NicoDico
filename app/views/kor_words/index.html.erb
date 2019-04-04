@@ -7,15 +7,15 @@
   <div class="blue-rectangle">
     <h3>Mot aléatoire</h3>
     <hr class= "hrthick">
-    <% mot_aleatoire = KorWord.all.sample(1).first %>
-    <h3><%= link_to mot_aleatoire.word, kor_word_path(mot_aleatoire) %></h3>
+    <% mot_aleatoire = Word.all.sample(1).first %>
+    <h3><%= link_to mot_aleatoire.word, kor_word_path(id: mot_aleatoire.word) %></h3>
   </div>
   <div class="blue-rectangle">
     <h3>Recherches fréquentes</h3>
     <hr class= "hrthick">
-    <% frequents = KorWord.order(:click).limit(10) %>
+    <% frequents = Word.order('click DESC').limit(10) %>
     <% frequents.each do |freq_word| %>
-      <h3><%= link_to freq_word.word, kor_word_path(freq_word.id) %></h3>
+      <h3><%= link_to freq_word.word, kor_word_path(id: freq_word.word) %></h3>
       <% unless freq_word == frequents.last %>
         <hr>
       <% end %>

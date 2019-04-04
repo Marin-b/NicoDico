@@ -1,0 +1,20 @@
+<div class="new-wrapper">
+  <%= render 'shared/contrib_header_pick_language' %>
+  <div class="blue-rectangle">
+    <%= render 'edit_kor_navbar' %>
+    <%= render 'kor_word_select' %>
+    <%= simple_form_for @word, url: kor_word_path,
+                               method: "patch" do |f| %>
+      <%= f.input :word %>
+      <%= f.simple_fields_for :nuances do |nuance| %>
+          <%= render 'nuance_fields', f: nuance %>
+        <% end %>
+        <div class="iconsActions">
+          <%= link_to_add_association f, :nuances do%>
+            <h5 class="addNuance">Ajouter une nuance</h5>
+          <% end %>
+        </div>
+      <%= f.submit "Confirmer", class: "submitkor" %>
+    <% end %>
+  </div>
+</div>

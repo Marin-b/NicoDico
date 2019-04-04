@@ -1,0 +1,16 @@
+<div class="addlist_popup">
+  <h4>Ajouter le mot a une liste</h4>
+  <%= form_tag({controller: "listes", action: "add_word_from_list"}) do %>
+    <%= select_tag 'list_id', options_from_collection_for_select(listes, "id", "name") %>
+    <%= hidden_field_tag 'nuance_id', nuance.id %>
+    <%= submit_tag "Confirmer" %>
+  <% end %>
+  <hr class="hrthick">
+  <h4 class="blue">Créer une nouvelle liste</h4>
+  <%= form_tag(controller: "listes", action: "add_word_and_list") do %>
+    <%= text_field_tag :name %>
+    <%= hidden_field_tag 'nuance_id', nuance.id %>
+    <%= submit_tag "Confirmer" %>
+  <% end %>
+</div>
+
