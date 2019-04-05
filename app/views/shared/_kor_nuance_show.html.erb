@@ -8,6 +8,7 @@
         <% end %>
       </h3>
     <% end %>
+    <% @word = Word.find(nuance.word_id) %>
     <h3 class="blue"><%= @word.word %></h3>
   </span>
 </div>
@@ -23,12 +24,12 @@
   <% end %>
 </span>
 </span>
-<span style="display:flex">
-  <i class="fas fa-level-up-alt fa-rotate-90" style=" margin-right: 20px;"></i>
+<span style="display:flex; align-items: center;">
+  <i class="fas fa-level-up-alt fa-rotate-90 orange" style=" margin-right: 10px; margin-bottom: 5px; margin-left: 5px; font-size: 20px;"></i>
   <% trads = nuance.traductions %>
   <% unless trads.first&.trad == "" || trads.first == nil %>
     <% trads.each do |traduction| %>
-      <h3 class="light blue">
+      <h3 class="orange light">
         <%= traduction.trad %><%= "<span style='padding-right: 10px;'>,</span>".html_safe unless traduction == trads.last  %>
       </h3>
     <% end %>
@@ -63,8 +64,8 @@
 <% if check_syn || check_ant %>
   <hr class="hrthick">
   <% if check_syn %>
-    <div>
-      <h5 class="mediumsized blue">Ces synonymes pourraient vous intéresser:</h5>
+    <div class="flex-wraps">
+      <h5 class="mediumsized blue">Synonymes:</h5>
       <% syn.each do |synonyme| %>
         <h5 class="blue light syno">
           <% if synonyme == syn[-1] %>
@@ -78,8 +79,8 @@
   <% end %>
   <% if check_ant %>
     <hr>
-    <div>
-      <h5 class="mediumsized blue">Ces antonymes pourraient vous intéresser:</h5>
+    <div class="flex-wraps">
+      <h5 class="mediumsized blue">Antonymes:</h5>
       <% ant.each do |antonyme| %>
         <h5 class="light blue anto">
           <% if antonyme == ant[-1] %>

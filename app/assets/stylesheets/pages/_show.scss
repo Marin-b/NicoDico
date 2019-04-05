@@ -42,6 +42,10 @@
     position: absolute;
     top: 10px;
     right: 10px;
+    &:hover {
+      color: orange;
+      cursor: pointer;
+    }
   }
 }
 .exempleCycle {
@@ -86,11 +90,15 @@
     cursor: pointer;
   }
 }
+.flex-wraps {
+  display: flex;
+  flex-wrap: wrap;
+}
 .suggestions {
   background-color: $blue;
-  width: 50vw;
+  width: 60vw;
   position: absolute;
-  left: 25vw;
+  left: 20vw;
   border-radius: 20px 20px 0px 0px;
   padding: 20px;
   padding-bottom: 40px;

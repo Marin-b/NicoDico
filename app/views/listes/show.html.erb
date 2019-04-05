@@ -1,21 +1,24 @@
 <div class="carnet-wrapper">
-  <h2><%= @liste.name %></h2>
-  <div class="flexbox">
+  <h2 class ="blue list-title"><%= @liste.name.capitalize %></h2>
+  <div class="flex-around">
     <div class="list-listes">
-      <% @liste.selections.each do |selection| %>
-        <% nuance = Nuance.find(selection.nuance_id) %>
-        <div class="flex-between listlist">
-          <h4>
-            <%= nuance.traductions.first.trad %>
-          </h4>
-          <h4>
-            <%= Word.find(nuance.word_id).word %>
-          </h4>
-        </div>
-      <% end %>
+      <input type="text" class="searchList"placeholder="Recherche un mot">
+      <div class="overflow">
+        <% @liste.selections.each do |selection| %>
+          <% nuance = Nuance.find(selection.nuance_id) %>
+          <%= link_to fetch_nuance_path(nuance: nuance), remote: true, class: 'listlist flex-between' do%>
+            <h4>
+              <%= nuance.traductions.first.trad %>
+            </h4>
+            <h4>
+              <%= Word.find(nuance.word_id).word %>
+            </h4>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-    <div class="liste-nuance">
-
+    <div class="holder-nuance-list blue-rectangle nuance-box" style="text-align: left;">
+      <%= render partial: '/shared/kor_nuance_show', locals: {nuance: Nuance.find(@liste.selections.first.nuance_id) }  %>
     </div>
   </div>
 </div>

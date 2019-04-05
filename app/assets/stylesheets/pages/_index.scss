@@ -13,3 +13,9 @@ body {
 i {
   color: $blue
 }
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}

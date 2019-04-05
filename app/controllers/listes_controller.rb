@@ -12,6 +12,13 @@ class ListesController < ApplicationController
     redirect_to listes_path
   end
 
+  def fetch_nuance
+    @selected = Nuance.find(params[:nuance])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def show
     redirect_to listes_path unless current_user.id == @liste.user_id
   end

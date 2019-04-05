@@ -11,7 +11,9 @@ User.destroy_all
 
 admin = User.create(
   email: "admin@admin.com", password: "password", status: "admin")
-
+list1 = Liste.create(
+  name: "List-test",
+  user_id: admin.id)
 corée = Word.create(word: "한국", click: 0, dict: 2)
 
 nuance1 = Nuance.create(
@@ -69,7 +71,11 @@ nuancemouchoir = Nuance.create(
 
 Traduction.create(
   nuance_id: nuancemouchoir.id,
-  trad: "mouchoir, mouchoir en papier")
+  trad: "mouchoir")
+
+Traduction.create(
+  nuance_id: nuancemouchoir.id,
+  trad: "mouchoir en papier")
 
 Exemple.create(
   nuance_id: nuancemouchoir.id,
@@ -118,7 +124,11 @@ nuancecongé = Nuance.create(
 
 Traduction.create(
   nuance_id: nuancecongé.id,
-  trad: "congé, jour de congé"
+  trad: "congé"
+  )
+Traduction.create(
+  nuance_id: nuancecongé.id,
+  trad: "jour de congé"
   )
 
 Exemple.create(
@@ -284,7 +294,7 @@ Registre.create(
 
 cerfvolant = Word.create(word: "연", click: 0, dict: 2)
 
-nuancecerfvolant =Nuance.create(
+nuancecerfvolant = Nuance.create(
   word_id: cerfvolant.id,
   user_id: admin.id,
   nature_fr: "Nom commun",
@@ -305,4 +315,10 @@ Registre.create(
   nuance_id: nuancecerfvolant.id,
   reg: "mot coréen pur, 순우리말"
 )
-
+nuancearray = [nuancecerfvolant, nuancericaner, nuancemouchoir, nuancedixjours, nuancepatient, nuancedénoncer, nuanceréunion, nuancechanter, nuance1, nuancecongé]
+2000.times do
+  Selection.create(
+    nuance_id: (nuancearray.sample(1)).first.id,
+    liste_id: list1.id
+    )
+end

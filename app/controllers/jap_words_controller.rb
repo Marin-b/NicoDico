@@ -1,34 +1,35 @@
-class KorWordsController < ApplicationController
+class JapWordsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:search, :show, :index]
   before_action :admin_check, only: :new
   before_action :load_lists, if: :user_signed_in?
 
   def index
+    @words = Word.where(dict: 1)
   end
 
   def search
-    @words = Word.where(dict: 2)
+    @words = Word.where(dict: 1)
     @word = @words.find_by_word params[:search_word]
     unless @word
       trad = Traduction.where('trad like ?', params[:search_word]).first
       @word = Word.find(Nuance.find(trad.nuance_id).word_id) if trad
     end
     if @word
-      redirect_to kor_word_path(@word.word)
+      redirect_to jap_word_path(@word.word)
     else
       render 'index'
     end
   end
 
   def edit
-    @words = Word.where(dict: 2)
+    @words = Word.where(dict: 1)
     @word = Word.find(params[:id])
   end
 
   def update
     @word = Word.find(params[:id])
     @word.update_attributes(set_params)
-    redirect_to kor_word_path(@word.word)
+    redirect_to jap_word_path(@word.word)
   end
 
   def show
@@ -50,13 +51,13 @@ class KorWordsController < ApplicationController
 
   def create
     @new_word = Word.new(set_params)
-    @new_word.dict = 2
+    @new_word.dict = 1
     @new_word.save
-    redirect_to kor_word_path(@new_word.word)
+    redirect_to jap_word_path(@new_word.word)
   end
 
   def select_word
-    @words = Word.where(dict: 2)
+    @words = Word.where(dict: 1)
   end
 
   private
@@ -81,7 +82,6 @@ class KorWordsController < ApplicationController
         :remarque,
         :commentaire,
         traductions_attributes: [:_destroy, :id, :trad],
-        specials_attributes: [:_destroy, :id, :char],
         exemples_attributes: [:_destroy, :id, :exemple_cb, :exemple_fr],
         synonymes_attributes: [:_destroy, :id, :syno],
         antonymes_attributes: [:_destroy, :id, :anto],
