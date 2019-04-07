@@ -1,7 +1,7 @@
 <div class="searchbar-wrapper">
-  <%= form_tag dict_search_path(@dict.lang), method: :post, class:"searchform" do %>
-    <% unless current_page?(controller: 'dict', action: 'show') %>
-      <%= link_to dict_path(params[:dict_id]) do %>
+  <%= form_tag korsearch_path, method: :post, class:"searchform" do %>
+    <% unless current_page?(action: 'index') %>
+      <%= link_to kor_words_path do %>
         <i class="fas fa-angle-double-left fa-2x"></i>
       <% end %>
     <% end %>

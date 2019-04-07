@@ -1,10 +1,10 @@
 <div class="new-wrapper">
   <%= render 'shared/contrib_header_pick_language' %>
   <div class="blue-rectangle">
-    <%= render 'edit_kor_navbar' %>
+    <%= render 'shared/edit_navbar' %>
     <hr class="hrthick">
     <div class="kor-form">
-      <%= simple_form_for @new_word, url: kor_words_path,
+      <%= simple_form_for @new_word, url: dict_word_index_path(@dict),
                                      method: "post" do |f| %>
         <%= f.input :word %>
         <div class="kor-nuances">

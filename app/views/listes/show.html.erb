@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="holder-nuance-list blue-rectangle nuance-box" style="text-align: left;">
-      <%= render partial: '/shared/kor_nuance_show', locals: {nuance: Nuance.find(@liste.selections.first.nuance_id) }  %>
+      <%= render partial: '/shared/nuance_show', locals: {nuance: Nuance.find(@liste.selections.first.nuance_id) }  %>
     </div>
   </div>
 </div>

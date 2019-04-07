@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_170632) do
+ActiveRecord::Schema.define(version: 2019_04_06_121730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 2019_04_03_170632) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["nuance_id"], name: "index_antonymes_on_nuance_id"
+  end
+
+  create_table "dictionaries", force: :cascade do |t|
+    t.string "lang"
+    t.string "welcome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "exemples", force: :cascade do |t|
@@ -116,9 +123,10 @@ ActiveRecord::Schema.define(version: 2019_04_03_170632) do
   create_table "words", force: :cascade do |t|
     t.string "word"
     t.integer "click", default: 0
-    t.integer "dict"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "dictionary_id"
+    t.index ["dictionary_id"], name: "index_words_on_dictionary_id"
   end
 
   add_foreign_key "antonymes", "nuances"
@@ -133,4 +141,5 @@ ActiveRecord::Schema.define(version: 2019_04_03_170632) do
   add_foreign_key "synonymes", "nuances"
   add_foreign_key "traductions", "nuances"
   add_foreign_key "variantes", "nuances"
+  add_foreign_key "words", "dictionaries"
 end

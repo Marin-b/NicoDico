@@ -19,7 +19,7 @@ const initSelectors = () => {
 }
 
 const dynamicForm = () => {
-  const addNuance = document.querySelector('.addNuance')
+  const addNuance = document.querySelector('.natureSelect')
   if (addNuance) {
     initSelectors();
     addNuance.addEventListener("click", (event) => {

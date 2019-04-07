@@ -6,7 +6,7 @@
   </div>
   <% @word.nuances.each do |nuance| %>
     <div class="blue-rectangle nuance-box">
-      <%= render 'shared/kor_nuance_show', nuance: nuance %>
+      <%= render 'shared/nuance_show', nuance: nuance %>
       <% if user_signed_in? %>
         <%= render partial: 'shared/add_to_list_popup', locals: {listes: @listes, nuance: nuance} %>
         <i class="fas fa-plus-circle fa-2x showListes"></i>
@@ -17,3 +17,4 @@
      <h3>Suggerer un mot | Faire part d'une erreur</h3>
   </div>
 </div>
+

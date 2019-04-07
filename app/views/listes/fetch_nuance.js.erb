@@ -1,4 +1,4 @@
-document.querySelector(".holder-nuance-list").innerHTML = "<%= escape_javascript(render partial: '/shared/kor_nuance_show', locals: { nuance: @selected } ) %>"
+document.querySelector(".holder-nuance-list").innerHTML = "<%= escape_javascript(render partial: '/shared/nuance_show', locals: { nuance: @selected } ) %>"
 
 
 function loadExemples() {
@@ -33,6 +33,17 @@ function loadExemples() {
     firstExemple.classList.add("onScreen")
   }
 
+  const addFurigana = () => {
+    if (document.querySelector('.addFurigana')) {
+      const getFurigana = document.querySelector('.specials')
+      const showFurigana = document.querySelector('.word_in_nuance')
+      let parseFurigana = getFurigana.innerHTML.slice(12, -8).replace("[", "<rt>").replace("]", "</rt>")
+      console.log(parseFurigana)
+      showFurigana.innerHTML = `<ruby>${parseFurigana}</ruby>`
+      getFurigana.innerHTML = ""
+    }
+  }
+
   const exempleShow = () => {
     const seeMore = document.querySelectorAll('.seemore')
     if (seeMore.length > 0) {
@@ -46,6 +57,7 @@ function loadExemples() {
     };
   };
   exempleShow();
+  addFurigana();
 }
 
 loadExemples()

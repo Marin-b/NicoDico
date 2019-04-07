@@ -8,7 +8,6 @@ const renderList = (container, array)=> {
 
 const searchList = () => {
   const searchBar = document.querySelector('.searchList')
-  console.log(searchBar)
   if (searchBar) {
     const container = document.querySelector('.overflow')
     const select_all = container.querySelectorAll('.listlist')

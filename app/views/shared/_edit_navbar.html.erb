@@ -1,0 +1,4 @@
+<div class="nuancemot">
+  <h4 class="blue"><%= link_to "Ajouter un mot", new_dict_word_path(@dict.lang) %></h4>
+  <h4 class="blue"><%= link_to "Modifier les nuances", edit_dict_word_path(dict_id: @dict.lang, id: @dict.words.first.word ) %></h4>
+</div>

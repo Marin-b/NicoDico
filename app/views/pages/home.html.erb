@@ -9,23 +9,23 @@
 </div>
   <div class="buttons-home">
     <div class="btn-row">
-      <%= link_to jap_words_path, class:"btn-home" do %>
+      <%= link_to dict_path(@dicts.first.lang), class:"btn-home" do %>
         <h2 class="blue">Japonais – Français</h2>
         <h3 class="blue opacity">日仏辞典</h3>
       <% end %>
-      <%= link_to kor_words_path, class:"btn-home" do %>
+      <%= link_to dict_path(@dicts[1].lang), class:"btn-home" do %>
         <h2 class="blue">Coréen – Français</h2>
         <h3 class="blue opacity">한불사전</h3>
       <% end %>
     </div>
     <div class="btn-row">
-      <div class="btn-home">
+     <%= link_to dict_path(@dicts[3].lang), class:"btn-home" do %>
         <h2 class="blue">Chinois simplifié – Français</h2>
         <h3 class="blue opacity">中法辞典（简体中文）</h3>
-      </div>
-      <div class="btn-home">
+      <% end %>
+      <%= link_to dict_path(@dicts[2].lang), class:"btn-home" do %>
           <h2 class="blue">Chinois traditionnel – Français</h2>
           <h3 class="blue opacity">中法辭典（繁體中文）</h3>
-      </div>
+      <% end %>
     </div>
   </div>

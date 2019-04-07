@@ -1,29 +1,35 @@
 <div class="align-center">
-  <span style="display:flex;"class="bold">
-    <% hanj = nuance.specials %>
-    <% if hanj.length > 0 %>
-      <h3 class="hanjas blue" style="padding-right: 15px;">
-        <% unless hanj.first&.char == "" || hanj.first == nil %>
-          [<% hanj.each do |hanja| %><%=hanja.char%><%= "," unless hanja == hanj.last %><% end %>]
+  <% if nuance.word.dictionary.lang == "japonais" %>
+    <p class="addFurigana" style="height: 0px; position: absolute"></p>
+  <% end %>
+  <span style="display:flex; align-items: baseline;"class="bold">
+    <% specials = nuance.specials %>
+    <% if specials.length > 0 %>
+      <h3 class="specials blue" style="padding-right: 15px;">
+        <% unless specials.first&.char == "" || specials.first == nil %>
+          [<% specials.each do |special| %><%=special.char%><%= "," unless special == specials.last %><% end %>]
         <% end %>
       </h3>
     <% end %>
     <% @word = Word.find(nuance.word_id) %>
-    <h3 class="blue"><%= @word.word %></h3>
+    <h3 class="blue word_in_nuance"><%= @word.word %></h3>
+    <span style ="display:flex; justify-content: space-between; margin-left:15px;">
+      <h5 class="light blue"><%= "(#{nuance.nature_fr} | #{nuance.nature_cb})" %></h5>
+      <span style="display:flex; margin-left: 15px">
+        <% registres = nuance.registres %>
+        <% unless registres.first&.reg == "" || registres.first == nil %>
+
+        <h5 class="light blue">(
+          <% registres.each do |registre| %>
+            <%= registre.reg %>
+            <%= "<span style='padding-right: 1px;'>,</span>".html_safe unless registre == registres.last  %>
+          <% end %>
+          )</h5>
+        <% end %>
+      </span>
+    </span>
   </span>
 </div>
-<span style ="display:flex; justify-content: space-between; width: 80%;">
-  <h5 class="light blue"><%= "(#{nuance.nature_fr} | #{nuance.nature_cb})" %></h5>
-<span style="display:flex">
-  <% registres = nuance.registres %>
-  <% unless registres.first&.reg == "" || registres.first == nil %>
-    <% registres.each do |registre| %>
-      <h5 class="light blue"><%= registre.reg %> </h5>
-      <%= "<span style='padding-right: 10px;'>,</span>".html_safe unless registre == registres.last  %>
-    <% end %>
-  <% end %>
-</span>
-</span>
 <span style="display:flex; align-items: center;">
   <i class="fas fa-level-up-alt fa-rotate-90 orange" style=" margin-right: 10px; margin-bottom: 5px; margin-left: 5px; font-size: 20px;"></i>
   <% trads = nuance.traductions %>

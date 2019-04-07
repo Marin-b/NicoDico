@@ -107,7 +107,6 @@
     color: white;
   }
 }
-
 @media only screen and (max-width: 900px) {
   .word-show {
     width: 90%;
@@ -117,5 +116,18 @@
   }
   .suggestions {
     width: 90vw;
+    left: 5vw;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .word-show {
+    width: 100%;
+  }
+  .blue-rectangle {
+    width: 100%
+  }
+  .suggestions {
+    width: 100vw;
+    left: 0vw;
   }
 }

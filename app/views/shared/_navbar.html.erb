@@ -1,22 +1,17 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <% unless current_page?(root_path)  %>
-    <%= link_to :back, class: "stick-left" do %>
-      <i class="fas fa-angle-double-left fa-2x"></i>
-    <% end %>
-  <% end %>
   <h2><%= link_to "ND", root_path %></h2>
   <i class="fas fa-bars dropdown-toggle fa-2x" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <%= link_to "Home", root_path, class:"dropdown-item" %>
+    <%= link_to "Accueil", root_path, class: "dropdown-item" %>
     <% if current_user %>
-      <%= link_to "Profile", new_user_session_path, class:"dropdown-item" %>
-      <%= link_to "Mon carnet", listes_path, class:"dropdown-item" %>
-      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+      <%= link_to "Profil", new_user_session_path, class: "dropdown-item" %>
+      <%= link_to "Mon carnet", listes_path, class: "dropdown-item" %>
+      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
     <% else %>
-      <%= link_to "Connection", new_user_session_path, class:"dropdown-item" %>
+      <%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %>
     <% end %>
     <% if current_user&.status == "admin" %>
-      <%= link_to "Contribuer", contribuer_path, class:"dropdown-item" %>
+      <%= link_to "Contribuer", choose_path, class: "dropdown-item" %>
     <% end %>
   </div>
 </div>
