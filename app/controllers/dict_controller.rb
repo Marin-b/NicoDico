@@ -5,9 +5,9 @@ class DictController < ApplicationController
 
   def search
     @dict = Dictionary.find_by(lang: params[:dict_id])
-    @word = @dict.words.find_by_word params[:search_word]
+    @word = @dict.words.find_by_word params[:search_word].downcase
     unless @word
-      trad = Traduction.where('trad like ?', params[:search_word])
+      trad = Traduction.where('trad like ?', params[:search_word].downcase)
       new_trad = (trad.select{ |x| x.nuance.word.dictionary_id == @dict.id }).first
       @word = Word.find(Nuance.find(new_trad.nuance_id).word_id) if new_trad
     end
