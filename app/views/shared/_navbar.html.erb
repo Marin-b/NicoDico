@@ -22,7 +22,7 @@
   </div>
   <div class="box">
     <% if current_page?(root_path) %>
-      <i class="fas fa-bars dropdown-toggle fa-2x blue-dd" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+      <i class="fas fa-bars dropdown-toggle fa-2x blue-dd" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" href="#" aria-expanded="false"></i>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <%= link_to "Accueil", root_path, class: "dropdown-item" %>
         <hr>
@@ -43,7 +43,7 @@
         <% end %>
       </div>
     <% else %>
-      <i class="fas fa-bars dropdown-toggle fa-2x white-dd" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+      <i class="fas fa-bars dropdown-toggle fa-2x white-dd" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" href="#" aria-expanded="false"></i>
        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <%= link_to "Accueil", root_path, class: "dropdown-item" %>
         <hr>
