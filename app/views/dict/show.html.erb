@@ -15,12 +15,11 @@
     <h3>Recherches fréquentes</h3>
     <hr class= "hrthick">
     <% if @frequents %>
-      <% @frequents.each do |freq_word| %>
-        <h3><%= link_to freq_word.word,  dict_word_path(dict_id: @dict.lang, id: freq_word.word) %></h3>
-        <% unless freq_word == @frequents.last %>
-          <hr>
+      <div class="recherche-freq">
+        <% @frequents.each do |freq_word| %>
+          <h3><%= link_to freq_word.word,  dict_word_path(dict_id: @dict.lang, id: freq_word.word) %></h3>
         <% end %>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>

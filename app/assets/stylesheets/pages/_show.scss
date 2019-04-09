@@ -14,26 +14,25 @@
     right: 5%;
     font-size: 40px;
   }
-  h1 {
+  .middle-header{
     text-align: center;
     margin: 0 auto;
+    a:hover {
+      opacity: 0.6;
+    }
   }
 }
 .show-wrapper {
   text-align: center;
+  position: relative;
   min-height: calc(100vh - 50px);
-}
-.nuance-box {
-  border-radius: 0px 0px 0px 0px;
-  &:last-child {
-    border-radius: 0px 0px 20px 20px;
-  }
+  height: 100%;
 }
 .blue-rectangle {
   border-radius: 0px 0px 20px 20px;
   background-color: white;
   width: 60vw;
-  margin: 10px auto;
+  margin: 0px auto;
   padding: 30px;
   display:block;
   text-align: left;
@@ -47,6 +46,15 @@
       cursor: pointer;
     }
   }
+}
+.nuance-box {
+  border-radius: 0px 0px 0px 0px;
+  &:last-child {
+    border-radius: 0px 0px 20px 20px;
+  }
+}
+.nuances-wrapper {
+  margin-bottom: 100px;
 }
 .exempleCycle {
   visibility: hidden;
@@ -96,18 +104,24 @@
 }
 .suggestions {
   background-color: $blue;
-  width: 60vw;
-  position: absolute;
-  left: 20vw;
+  width: 60%;
+  right: 20%;
+  margin:0 auto;
   border-radius: 20px 20px 0px 0px;
   padding: 20px;
-  padding-bottom: 40px;
   margin-top: 20px;
+  position: absolute;
+  bottom: 0px;
   h3{
     color: white;
   }
 }
-@media only screen and (max-width: 900px) {
+.span-show {
+  display:flex;
+  margin-left:15px;
+}
+
+@media only screen and (max-width: 970px) {
   .word-show {
     width: 90%;
   }
@@ -118,7 +132,22 @@
     width: 90vw;
     left: 5vw;
   }
+  .addlist_popup {
+    width: 80vw;
+    left: 10vw;
+  }
 }
+
+@media only screen and (max-width: 650px) {
+.nuances-wrapper {
+    margin-bottom: 150px;
+  }
+  .span-show {
+    display:block;
+    margin: 0;
+  }
+}
+
 @media only screen and (max-width: 400px) {
   .word-show {
     width: 100%;
@@ -129,5 +158,9 @@
   .suggestions {
     width: 100vw;
     left: 0vw;
+  }
+  .addlist_popup {
+    width: 90vw;
+    left: 5vw;
   }
 }

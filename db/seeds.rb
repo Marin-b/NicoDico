@@ -24,15 +24,12 @@ coréen = Dictionary.create(
   lang:"coréen",
   welcome: "<span class='orange bold'>한불사전</span>에 오실 것을 환영합니다")
 chinois_t = Dictionary.create(
-  lang:"chinois-traditionnel",
-  welcome: "歡迎<span class='orange bold'>到中法</span>辭典(繁體中文)")
+  lang:"chinois traditionnel",
+  welcome: "歡迎到<span class='orange bold'>中法辭典</span>(繁體中文)")
 chinois_s = Dictionary.create(
-  lang:"chinois-simplifié",
-  welcome: "欢迎<span class='orange bold'>到中法</span>辞典（简体中文）")
+  lang:"chinois simplifié",
+  welcome: "欢迎到<span class='orange bold'>中法辞典</span>（简体中文）")
 
-# 10000.times do
-#    Word.create(word: Faker::Verb.base, click: 0, dictionary_id: coréen.id)
-# end
 
 # 10000.times do
 #    Word.create(word: Faker::Verb.base, click: 0, dictionary_id: japonais.id)
@@ -66,11 +63,6 @@ exemple1 = Exemple.create(
   exemple_cb: "한국에는 산이 가득 차다.",
   exemple_fr: "La Corée du Sud est remplie de montagnes")
 
-exemple2 = Exemple.create(
-  nuance_id: nuance1.id,
-  exemple_cb: "한국에는 산이 가득 차다.2",
-  exemple_fr: "La Corée du Sud est remplie de montagnes2")
-
  Registre.create(
   nuance_id: nuance1.id,
   reg: "soutenu"
@@ -83,14 +75,6 @@ registre2 = Registre.create(
 char1 = Special.create(
   nuance_id: nuance1.id,
   char: "韓國")
-
-synonyme1 = Synonyme.create(
-  nuance_id: nuance1.id,
-  syno: "Synonyme1")
-
-antonyme1 = Antonyme.create(
-  nuance_id: nuance1.id,
-  anto: "Antonyme1")
 
 mouchoir = Word.create(word: "휴지", click: 0, dictionary_id: coréen.id)
 
@@ -387,7 +371,7 @@ nuancearbre = Nuance.create(
   remarque: "")
 
 Special.create(
-  nuance_id: arbre.id,
+  nuance_id: nuancearbre.id,
   char: "木[き]"
   )
 
@@ -701,12 +685,8 @@ Exemple.create(
   exemple_fr: "Le garçon avait grimpé au sommet de l'arbre et on ne pouvait pas l'attraper. ")
 
 Special.create(
-  nuance_id: nuancenature.id,
+  nuance_id: nuancearbre.id,
   char: "shù")
-
-Special.create(
-  nuance_id: nuancenature.id,
-  char: "树")
 
 manger = Word.create(word: "吃", click: 0, dictionary_id: chinois_t.id)
 
@@ -728,7 +708,7 @@ Exemple.create(
   exemple_fr: "Il n'a pas fini son repas alors qu'il disait qu'il avait super faim.")
 
 Special.create(
-  nuance_id: nuancenature.id,
+  nuance_id: nuancemanger.id,
   char: "chī")
 
 partenaire = Word.create(word: "夥伴", click: 0, dictionary_id: chinois_t.id)
@@ -973,12 +953,9 @@ Exemple.create(
   exemple_fr: "Le garçon avait grimpé au sommet de l'arbre et on ne pouvait pas l'attraper. ")
 
 Special.create(
-  nuance_id: nuancenature.id,
+  nuance_id: nuancearbre.id,
   char: "shù")
 
-Special.create(
-  nuance_id: nuancenature.id,
-  char: "樹")
 
 manger = Word.create(word: "吃", click: 0, dictionary_id: chinois_s.id)
 
@@ -1000,7 +977,7 @@ Exemple.create(
   exemple_fr: "Il n'a pas fini son repas alors qu'il disait qu'il avait super faim.")
 
 Special.create(
-  nuance_id: nuancenature.id,
+  nuance_id: nuancemanger.id,
   char: "chī")
 
 partenaire = Word.create(word: "伙伴", click: 0, dictionary_id: chinois_s.id)
@@ -1198,11 +1175,3 @@ Exemple.create(
   exemple_fr: "Il y a tant de jolies fleurs dans notre jardin.")
 
 
-nuancearray = [nuancecerfvolant, nuancericaner, nuancemouchoir, nuancedixjours, nuancepatient, nuancedénoncer, nuanceréunion, nuancechanter, nuance1, nuancecongé]
-
-200.times do
-  Selection.create(
-    nuance_id: (nuancearray.sample(1)).first.id,
-    liste_id: list1.id
-    )
-end

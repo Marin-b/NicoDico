@@ -6,7 +6,7 @@
     <div class="kor-form">
       <%= simple_form_for @new_word, url: dict_word_index_path(@dict),
                                      method: "post" do |f| %>
-        <%= f.input :word %>
+        <%= f.input :word, label: "Mot"  %>
         <div class="kor-nuances">
         <%= f.simple_fields_for :nuances do |nuance| %>
           <%= render 'nuance_fields', f: nuance %>

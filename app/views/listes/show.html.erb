@@ -18,7 +18,11 @@
       </div>
     </div>
     <div class="holder-nuance-list blue-rectangle nuance-box" style="text-align: left;">
-      <%= render partial: '/shared/nuance_show', locals: {nuance: Nuance.find(@liste.selections.first.nuance_id) }  %>
+      <% if @liste.selections.first  %>
+        <%= render partial: '/shared/nuance_show', locals: {nuance: Nuance.find(@liste.selections.first.nuance_id) }  %>
+      <% else %>
+        <h4> Cette liste est vide </h4>
+      <% end %>
     </div>
   </div>
 </div>

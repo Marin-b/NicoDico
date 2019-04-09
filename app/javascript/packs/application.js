@@ -5,9 +5,10 @@ import { dynamicForm } from '../functions/moreHanjas'
 import { toggleListePannel } from '../functions/toggleAddListes'
 import { searchList } from '../functions/searchList'
 import { addFurigana } from '../functions/addFurigana'
-
+import { autocompleteDropDown } from '../functions/autocompleteDropDown'
 exempleShow();
 dynamicForm();
 toggleListePannel();
 searchList();
 addFurigana();
+autocompleteDropDown();

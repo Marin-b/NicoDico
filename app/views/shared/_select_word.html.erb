@@ -1,43 +1,12 @@
-<p class="hidden dict_name"><%= @dict.lang %></p>
-
-<input type="text" id="ajax" list="json-datalist" placeholder="e.g. datalist">
-<div class="options_for_input"></div>
+<p class="hidden dict_name" style="font-size:0px"><%= @dict.lang %></p>
+<span style="display: flex; align-items: baseline">
+<input type="text" id="autocomplete-drop" list="json-datalist" placeholder="e.g. datalist">
 <datalist id="json-datalist">
   <% words.each do |word| %>
-    <option value="">
-      <%= word.word %>
+    <option value="<%= word.word %>">
     </option>
   <% end %>
 </datalist>
-<script>
-  var dataList = document.getElementById('json-datalist');
-  var input = document.getElementById('ajax');
-  // Create a new XMLHttpRequest.
-  let selection = []
-  console.log("명사".length)
-  const renderSelection = (arr)=> {
-    const display_options = document.querySelector('.options_for_input')
-    display_options.innerHTML = ""
-    arr.forEach((el) => {
-      display_options.appendChild(el)
-    })
-  }
-
-  const options = dataList.querySelectorAll("option")
-  input.addEventListener("keyup", (event) => {
-    selection = []
-    if (input.value === "" ) {
-
-    } else {
-      options.forEach((option) => {
-        if (option.innerHTML.includes(input.value)) {
-          selection.push(option)
-        }
-      })
-    }
-    console.log(selection)
-    renderSelection(selection);
-  });
-</script>
-
-<%#= select_tag 'word_id', options_from_collection_for_select(words[0..1], "word", "word"), onchange: "window.location.replace(`/dict/${document.querySelector('.dict_name').innerHTML}/word/${this.value}/edit`);", prompt: "Choisis un mot" %>
+  <button id="submit_autocomplete" style ="padding-left: 10px">Go</button>
+  <h6 style ="padding-left: 10px"><%= words.length %> mots</h6>
+</span>

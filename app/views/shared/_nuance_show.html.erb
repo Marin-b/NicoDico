@@ -2,27 +2,28 @@
   <% if nuance.word.dictionary.lang == "japonais" %>
     <p class="addFurigana" style="height: 0px; position: absolute"></p>
   <% end %>
-  <span style="display:flex; align-items: baseline;"class="bold">
-    <% specials = nuance.specials %>
-    <% if specials.length > 0 %>
-      <h3 class="specials blue" style="padding-right: 15px;">
-        <% unless specials.first&.char == "" || specials.first == nil %>
-          [<% specials.each do |special| %><%=special.char%><%= "," unless special == specials.last %><% end %>]
-        <% end %>
-      </h3>
-    <% end %>
+  <span style="align-items: baseline;"class="bold span-show">
+    <div style = "display:flex">
     <% @word = Word.find(nuance.word_id) %>
     <h3 class="blue word_in_nuance"><%= @word.word %></h3>
-    <span style ="display:flex; justify-content: space-between; margin-left:15px;">
+      <% specials = nuance.specials %>
+      <% if specials.length > 0 %>
+        <h3 class="specials blue" style="padding-left: 15px;">
+          <% unless specials.first&.char == "" || specials.first == nil %>
+            [<% specials.each do |special| %><%=special.char%><%= "," unless special == specials.last %><% end %>]
+          <% end %>
+        </h3>
+      <% end %>
+    </div>
+    <span class="span-show">
       <h5 class="light blue"><%= "(#{nuance.nature_fr} | #{nuance.nature_cb})" %></h5>
-      <span style="display:flex; margin-left: 15px">
+      <span class="span-show">
         <% registres = nuance.registres %>
         <% unless registres.first&.reg == "" || registres.first == nil %>
 
         <h5 class="light blue">(
           <% registres.each do |registre| %>
-            <%= registre.reg %>
-            <%= "<span style='padding-right: 1px;'>,</span>".html_safe unless registre == registres.last  %>
+            <%= registre.reg %><%= "<span style='padding-right: 1px;'>,</span>".html_safe unless registre == registres.last  %>
           <% end %>
           )</h5>
         <% end %>
@@ -30,17 +31,18 @@
     </span>
   </span>
 </div>
-<span style="display:flex; align-items: center;">
-  <i class="fas fa-level-up-alt fa-rotate-90 orange" style=" margin-right: 10px; margin-bottom: 5px; margin-left: 5px; font-size: 20px;"></i>
   <% trads = nuance.traductions %>
   <% unless trads.first&.trad == "" || trads.first == nil %>
     <% trads.each do |traduction| %>
+      <span style="display:flex; align-items: center;">
+      <i class="fas fa-level-up-alt fa-rotate-90 orange" style=" margin-right: 10px; margin-bottom: 5px; margin-left: 5px; font-size: 20px;"></i>
       <h3 class="orange light">
-        <%= traduction.trad %><%= "<span style='padding-right: 10px;'>,</span>".html_safe unless traduction == trads.last  %>
+        <%= traduction.trad %>
       </h3>
+    </span>
     <% end %>
   <% end %>
-</span>
+
 <% unless nuance.remarque == "" %>
   <h5 class="light blue">(<%= nuance.remarque %>)</h5>
 <% end %>
@@ -61,8 +63,18 @@
       </h5>
     </div>
   <% end %>
-  <h5 class="blue light seemore">Voir plus</h5>
+  <h5 class="blue light seemore">Voir plus d'exemples</h5>
+  <% varis = nuance.variantes %>
+  <% if varis.length > 0 %>
+  <hr>
+    <h5 class="light blue"> Variantes :
+      <% varis.each do |vari| %>
+        <%= vari.var %><%= "," unless vari == varis.last %>
+      <% end %>
+    </h5>
+  <% end %>
 </div>
+<% language = nuance.word.dictionary.lang%>
 <% syn = nuance.synonymes %>
 <% ant = nuance.antonymes %>
 <% check_syn =  syn.first&.syno != "" && syn.first != nil  %>
@@ -71,13 +83,13 @@
   <hr class="hrthick">
   <% if check_syn %>
     <div class="flex-wraps">
-      <h5 class="mediumsized blue">Synonymes:</h5>
+      <h5 class="mediumsized blue" style="padding-right: 10px;">Synonymes :</h5>
       <% syn.each do |synonyme| %>
         <h5 class="blue light syno">
           <% if synonyme == syn[-1] %>
-            <%= "#{synonyme.syno}"%>
+            <%= link_to synonyme.syno, dict_search_path(language, search_word: synonyme.syno), method: "post"%>
           <% else %>
-            <%= "#{synonyme.syno},"%>
+          <%= link_to "#{synonyme.syno},", dict_search_path(language, search_word: synonyme.syno), method: "post" %>
           <% end %>
         </h5>
       <% end %>
@@ -86,13 +98,13 @@
   <% if check_ant %>
     <hr>
     <div class="flex-wraps">
-      <h5 class="mediumsized blue">Antonymes:</h5>
+      <h5 class="mediumsized blue" style="padding-right: 10px;">Antonymes : </h5>
       <% ant.each do |antonyme| %>
         <h5 class="light blue anto">
           <% if antonyme == ant[-1] %>
-            <%= "#{antonyme.anto}"%>
+            <%= link_to antonyme.anto, dict_search_path(language, search_word: antonyme.anto), method: "post" %>
           <% else %>
-            <%= "#{antonyme.anto},"%>
+            <%= link_to "#{antonyme.anto},", dict_search_path(language, search_word: antonyme.anto), method: "post" %>
           <% end %>
         </h5>
       <% end %>

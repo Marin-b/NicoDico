@@ -8,10 +8,12 @@ class Nuance < ApplicationRecord
   has_many :registres, dependent: :destroy
   has_many :traductions, dependent: :destroy
   has_many :selections, dependent: :destroy
+  has_many :variantes, dependent: :destroy
   accepts_nested_attributes_for :specials, allow_destroy: true
   accepts_nested_attributes_for :exemples, allow_destroy: true
   accepts_nested_attributes_for :synonymes, allow_destroy: true
   accepts_nested_attributes_for :antonymes, allow_destroy: true
   accepts_nested_attributes_for :registres, allow_destroy: true
   accepts_nested_attributes_for :traductions, allow_destroy: true
+  accepts_nested_attributes_for :variantes, allow_destroy: true
 end

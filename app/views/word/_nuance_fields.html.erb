@@ -11,7 +11,7 @@
   <% if @dict.lang == "coréen" %>
     <h6>Hanja</h6>
   <% elsif @dict.lang == "japonais" %>
-    <h6>Furigana</h6>
+    <h6>Furigana <span style="padding-left: 10px;">(format: kana[furigana])</span></h6>
   <% else %>
     <h6>Pinyin</h6>
   <% end %>
@@ -53,8 +53,20 @@
     </div>
   </div>
   <hr>
+  <h6>Variantes</h6>
+  <div class="exemple-form">
+    <%= f.simple_fields_for :variantes do |vari| %>
+      <%= render 'variante_fields', f: vari %>
+    <% end %>
+    <div class="iconsActions">
+      <%= link_to_add_association f, :variantes, partial: "variante_fields"  do%>
+        <i class="fas fa-plus-circle fa-2x clickMe"></i>
+      <% end %>
+    </div>
+  </div>
+  <hr>
   <%= f.input :user_id, as: :hidden, input_html: { :value => current_user.id } %>
-  <%= f.input :remarque %>
+  <%= f.input :remarque, html_options: {spellcheck: "true"} %>
   <hr>
   <div class="exemple-form">
     <%= f.simple_fields_for :exemples do |exemple| %>
@@ -67,7 +79,7 @@
     </div>
   </div>
   <hr>
-  <%= f.input :commentaire %>
+  <%= f.input :commentaire, html_options: {spellcheck: "true"} %>
   <hr>
   <h6>Synonymes</h6>
     <div class="exemple-form">

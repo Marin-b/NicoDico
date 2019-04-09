@@ -1,4 +1,6 @@
 class WordController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
+  before_action :admin_check, only: [:new, :create, :edit, :destroy, :update, :choose_dictionary_contrib]
   before_action :load_lists, if: :user_signed_in?, only: [:show]
   before_action :load_dicts, only: [:new, :choose_dictionary_contrib, :create, :edit]
   before_action :find_dict, only: [:show, :create, :new, :edit, :update, :destroy]
@@ -26,7 +28,7 @@ class WordController < ApplicationController
   end
 
   def edit
-    @word = Word.find_by_word(params[:id])
+    @word = @dict.words.find_by_word(params[:id])
   end
 
   def choose_dictionary_contrib
@@ -52,6 +54,10 @@ class WordController < ApplicationController
     @new_nuance.specials.build unless @dict.lang == "coréen"
     @new_nuance.exemples.build
     @new_nuance.traductions.build
+  end
+
+  def admin_check
+    redirect_to root_path unless current_user.status == "admin"
   end
 
   def load_lists
@@ -85,7 +91,8 @@ class WordController < ApplicationController
         exemples_attributes: [:_destroy, :id, :exemple_cb, :exemple_fr],
         synonymes_attributes: [:_destroy, :id, :syno],
         antonymes_attributes: [:_destroy, :id, :anto],
-        registres_attributes: [:_destroy, :id, :reg]
+        registres_attributes: [:_destroy, :id, :reg],
+        variantes_attributes: [:_destroy, :id, :var]
       ]
     )
   end

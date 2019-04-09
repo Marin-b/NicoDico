@@ -10,7 +10,7 @@ gem 'rails', '5.2.2'
 gem 'redis'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'jquery-rails'
-gem 'faker', '~> 1.9', '>= 1.9.3'
+gem 'omniauth-facebook'
 
 gem 'pg_search', '~> 2.1', '>= 2.1.4'
 gem 'autoprefixer-rails'

@@ -1,17 +1,68 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <h2><%= link_to "ND", root_path %></h2>
-  <i class="fas fa-bars dropdown-toggle fa-2x" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <%= link_to "Accueil", root_path, class: "dropdown-item" %>
-    <% if current_user %>
-      <%= link_to "Profil", new_user_session_path, class: "dropdown-item" %>
-      <%= link_to "Mon carnet", listes_path, class: "dropdown-item" %>
-      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-    <% else %>
-      <%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %>
+<% if current_page?(root_path) %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon white-nav">
+<% else %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<% end %>
+  <div class="box">
+    <% if @dict&.lang %>
+      <% if @dict.lang.include? "chinois" %>
+        <% if @dict.lang.include? "traditionnel" %>
+          <% dict_name = "Ch.tradi" %>
+        <% else %>
+          <% dict_name = "Ch.simpli" %>
+        <% end %>
+      <% else %>
+        <% dict_name = @dict.lang %>
+      <% end %>
+      <%= link_to "<h4 class='white bold no-hover'>#{dict_name.capitalize}</h4>".html_safe, dict_path(@dict.lang) %>
     <% end %>
-    <% if current_user&.status == "admin" %>
-      <%= link_to "Contribuer", choose_path, class: "dropdown-item" %>
+  </div>
+  <div class="box">
+    <h2><%= link_to "ND".html_safe, root_path %></h2>
+  </div>
+  <div class="box">
+    <% if current_page?(root_path) %>
+      <i class="fas fa-bars dropdown-toggle fa-2x blue-dd" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%= link_to "Accueil", root_path, class: "dropdown-item" %>
+        <hr>
+        <h6 style="padding-left: 10px;">Dictionnaires : </h6>
+        <%= link_to "Japonais", dict_path("japonais"), class: "dropdown-item" %>
+         <%= link_to "Coréen", dict_path("coréen"), class: "dropdown-item" %>
+          <%= link_to "Ch.traditionnel", dict_path("chinois traditionnel"), class: "dropdown-item" %>
+          <%= link_to "Ch.simplifié", dict_path("chinois simplifié"), class: "dropdown-item" %>
+        <hr>
+        <% if current_user %>
+          <%= link_to "Mon carnet", listes_path, class: "dropdown-item" %>
+          <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        <% else %>
+          <%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %>
+        <% end %>
+        <% if current_user&.status == "admin" %>
+          <%= link_to "Contribuer", choose_path, class: "dropdown-item" %>
+        <% end %>
+      </div>
+    <% else %>
+      <i class="fas fa-bars dropdown-toggle fa-2x white-dd" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%= link_to "Accueil", root_path, class: "dropdown-item" %>
+        <hr>
+        <h6 style="padding-left: 10px;">Dictionnaires : </h6>
+        <%= link_to "Japonais", dict_path("japonais"), class: "dropdown-item" %>
+         <%= link_to "Coréen", dict_path("coréen"), class: "dropdown-item" %>
+          <%= link_to "Ch.traditionnel", dict_path("chinois traditionnel"), class: "dropdown-item" %>
+          <%= link_to "Ch.simplifié", dict_path("chinois simplifié"), class: "dropdown-item" %>
+        <hr>
+        <% if current_user %>
+          <%= link_to "Mon carnet", listes_path, class: "dropdown-item" %>
+          <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        <% else %>
+          <%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %>
+        <% end %>
+        <% if current_user&.status == "admin" %>
+          <%= link_to "Contribuer", choose_path, class: "dropdown-item" %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

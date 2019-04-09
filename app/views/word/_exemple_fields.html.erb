@@ -1,12 +1,12 @@
 <div class="nested-fields">
   <%= f.input :id, as: :hidden %>
   <div class="grouped">
-    <%= f.label :exemple_cible %>
-    <%= f.text_area :exemple_cb %>
+    <%= f.label :exemple_francais %>
+    <%= f.text_area :exemple_fr , html_options: {spellcheck: "true"} %>
   </div>
   <div class="grouped">
-    <%= f.label :exemple_traduction %>
-    <%= f.text_area :exemple_fr %>
+    <%= f.label :exemple_cible %>
+    <%= f.text_area :exemple_cb %>
   </div>
   <div class="iconsActions">
     <%= link_to_remove_association f do %>

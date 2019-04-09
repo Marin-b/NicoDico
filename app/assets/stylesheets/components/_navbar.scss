@@ -1,8 +1,8 @@
 .navbar-lewagon {
-  text-align: center;
   background: $orange;
   height: 50px;
-  display: block;
+  display: flex;
+  align-items:center;
   box-shadow: 0px 5px 20px -7px rgba(16,37,91,1);
   h2 {
     font-family: roboto;
@@ -16,12 +16,47 @@
   a:hover {
     text-decoration:none;
   }
- i {
-  position: absolute;
-  right: 50px;
+}
+.box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: 100%;
+}
+.box:first-child {
+  justify-content: left;
+  position: relative;
+  h4{
+    position: absolute;
+    margin-right: auto;
+    margin-bottom: 0px;
+    padding: 0px;
+    height: 100%;
+    bottom: -4px;
+  }
+}
+
+.box:last-child  {
+  position: relative;
+  i {
+    position:absolute;
+    margin-right: auto;
+    padding: 0px;
+    margin: 0px;
+    right: 0px;
+    height: 100%;
+  }
+}
+
+.blue-dd {
+  color: $blue;
+}
+.white-dd {
   color: white;
-  border: 0;
- }
+}
+.white-nav {
+  background-color:white
 }
 .stick-left {
   position: absolute;
@@ -36,4 +71,8 @@
   position: absolute;
   right: 10px;
   left: auto;
+}
+
+.no-hover:hover {
+  color: white;
 }

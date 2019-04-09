@@ -54,6 +54,12 @@
     }
   }
 }
+.recherche-freq {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 240px;
+}
 @media only screen and (max-width: 715px) {
   .searchbar-wrapper {
     form {
@@ -69,10 +75,11 @@
       width: 90%;
       &:first-child {
         border-radius: 0px;
+        margin-bottom: 20px;
       }
     }
   }
   .wrapper-index {
-    height: 40vh;
+    height: 45vh;
   }
 }

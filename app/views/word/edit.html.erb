@@ -5,7 +5,7 @@
     <%= render 'shared/select_word', words: @words %>
     <%= simple_form_for @word, url: dict_word_path(@dict, @word),
                                method: "patch" do |f| %>
-      <%= f.input :word %>
+      <%= f.input :word, label: "Mot" %>
       <%= link_to 'Supprimer le mot', dict_word_path(@dict.lang, @word), method: :delete, data: {confirm: "Etes vous sure de vouloir supprimer #{@word.word}?"} %>
       <%= f.simple_fields_for :nuances do |nuance| %>
           <%= nuance.input :id, as: :hidden %>
