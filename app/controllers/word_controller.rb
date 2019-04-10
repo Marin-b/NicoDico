@@ -92,7 +92,8 @@ class WordController < ApplicationController
         synonymes_attributes: [:_destroy, :id, :syno],
         antonymes_attributes: [:_destroy, :id, :anto],
         registres_attributes: [:_destroy, :id, :reg],
-        variantes_attributes: [:_destroy, :id, :var]
+        variantes_attributes: [:_destroy, :id, :var],
+        specials_attributes: [:_destroy, :id, :char]
       ]
     )
   end

@@ -24,12 +24,6 @@ class DictController < ApplicationController
     @frequents = @words.order('click DESC').limit(10)
   end
 
-  def word_show
-    @word = Word.find_by_word(params[:id])
-    @word.click += 1
-    @word.save
-  end
-
   private
 
   def find_dict
@@ -38,26 +32,5 @@ class DictController < ApplicationController
 
   def admin_check
     redirect_to root_path unless current_user.status == "admin"
-  end
-
-  def set_params
-    params.require(:word).permit(
-      :word,
-      nuances_attributes: [
-        :_destroy,
-        :id,
-        :user_id,
-        :nature_fr,
-        :nature_cb,
-        :remarque,
-        :commentaire,
-        traductions_attributes: [:_destroy, :id, :trad],
-        specials_attributes: [:_destroy, :id, :char],
-        exemples_attributes: [:_destroy, :id, :exemple_cb, :exemple_fr],
-        synonymes_attributes: [:_destroy, :id, :syno],
-        antonymes_attributes: [:_destroy, :id, :anto],
-        registres_attributes: [:_destroy, :id, :reg]
-      ]
-    )
   end
 end
