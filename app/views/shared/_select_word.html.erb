@@ -2,7 +2,7 @@
 <span style="display: flex; align-items: baseline">
 <input type="text" id="autocomplete-drop" list="json-datalist" placeholder="e.g. datalist">
 <datalist id="json-datalist">
-  <% words.each do |word| %>
+  <% words.sort.each do |word| %>
     <option value="<%= word.word %>">
     </option>
   <% end %>

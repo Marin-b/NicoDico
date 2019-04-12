@@ -47,10 +47,6 @@
 <% unless nuance.remarque == "" %>
   <h5 class="light blue">(<%= nuance.remarque %>)</h5>
 <% end %>
-<% unless nuance.commentaire == "" %>
-  <hr>
-  <h5 class="light blue"><%= nuance.commentaire %>.</h5>
-<% end %>
 <hr>
 <div class="exemple-box">
   <% ex = nuance.exemples.sort_by {|nuance| nuance.order} %>
@@ -77,6 +73,10 @@
     <% end %>
   <% end %>
 </div>
+<% unless nuance.commentaire == "" %>
+  <hr>
+  <h5 class="light blue"><%= nuance.commentaire %>.</h5>
+<% end %>
 <% language = nuance.word.dictionary.lang%>
 <% syn = nuance.synonymes.sort_by {|nuance| nuance.order} %>
 <% ant = nuance.antonymes.sort_by {|nuance| nuance.order} %>
