@@ -54,25 +54,27 @@
 <hr>
 <div class="exemple-box">
   <% ex = nuance.exemples.sort_by {|nuance| nuance.order} %>
-  <% ex.each do |exemple| %>
-    <div class="exempleCycle">
-      <h5 class="mediumsized blue">
-        <%= exemple.exemple_cb %>
+  <% if ex.length > 0 %>
+    <% ex.each do |exemple| %>
+      <div class="exempleCycle">
+        <h5 class="mediumsized blue">
+          <%= exemple.exemple_cb %>
+        </h5>
+        <h5 class="blue mediumsized">
+           <%= exemple.exemple_fr %>
+        </h5>
+      </div>
+    <% end %>
+    <h5 class="blue light seemore">Voir plus d'exemples</h5>
+    <% varis = nuance.variantes.sort_by {|nuance| nuance.order} %>
+    <% if varis.length > 0 %>
+    <hr>
+      <h5 class="light blue"> Variantes :
+        <% varis.each do |vari| %>
+          <%= vari.var %><%= "," unless vari == varis.last %>
+        <% end %>
       </h5>
-      <h5 class="blue mediumsized">
-         <%= exemple.exemple_fr %>
-      </h5>
-    </div>
-  <% end %>
-  <h5 class="blue light seemore">Voir plus d'exemples</h5>
-  <% varis = nuance.variantes.sort_by {|nuance| nuance.order} %>
-  <% if varis.length > 0 %>
-  <hr>
-    <h5 class="light blue"> Variantes :
-      <% varis.each do |vari| %>
-        <%= vari.var %><%= "," unless vari == varis.last %>
-      <% end %>
-    </h5>
+    <% end %>
   <% end %>
 </div>
 <% language = nuance.word.dictionary.lang%>
