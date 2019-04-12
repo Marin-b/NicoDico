@@ -5,4 +5,6 @@ class Word < ApplicationRecord
   accepts_nested_attributes_for :nuances, allow_destroy: true
 
   validates :word, presence: true
+
+  searchkick
 end

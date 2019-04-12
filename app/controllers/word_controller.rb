@@ -88,7 +88,7 @@ class WordController < ApplicationController
         :remarque,
         :commentaire,
         :order,
-        traductions_attributes: [:_destroy, :id, :trad, :order],
+        traductions_attributes: [:_destroy, :id, :trad, :order, :precision],
         exemples_attributes: [:_destroy, :id, :exemple_cb, :exemple_fr, :order],
         synonymes_attributes: [:_destroy, :id, :syno, :order],
         antonymes_attributes: [:_destroy, :id, :anto, :order],
