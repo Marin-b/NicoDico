@@ -8,8 +8,8 @@ const addFurigana = () => {
       const showFurigana = getF.parentNode.querySelector('.word_in_nuance')
       let parseFurigana = getF.innerHTML.replace(/ /g,'').slice(2,-2).replace("[", "<rt>").replace("]", "</rt>")
       showFurigana.innerHTML = `<ruby>${parseFurigana}</ruby>`
-      getFurigana.innerHTML = ""
-      getFurigana.style.padding = "0px"
+      getF.innerHTML = ""
+      getF.style.padding = "0px"
     })
   }
 }
