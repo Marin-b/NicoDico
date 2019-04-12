@@ -11,6 +11,7 @@ gem 'redis'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'jquery-rails'
 gem 'omniauth-facebook'
+gem 'searchkick', '~> 4.0'
 
 gem 'pg_search', '~> 2.1', '>= 2.1.4'
 gem 'autoprefixer-rails'

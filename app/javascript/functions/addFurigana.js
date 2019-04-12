@@ -3,13 +3,14 @@ import { Furigana } from "gem-furigana";
 
 const addFurigana = () => {
   if (document.querySelector('.addFurigana')) {
-    const getFurigana = document.querySelector('.specials')
-    const showFurigana = document.querySelector('.word_in_nuance')
-    let parseFurigana = getFurigana.innerHTML.replace(/ /g,'').slice(2,-2).replace("[", "<rt>").replace("]", "</rt>")
-    console.log(parseFurigana)
-    showFurigana.innerHTML = `<ruby>${parseFurigana}</ruby>`
-    getFurigana.innerHTML = ""
-    getFurigana.style.padding = "0px"
+    const getFurigana = document.querySelectorAll('.specials')
+    getFurigana.forEach((getF) => {
+      const showFurigana = getF.parentNode.querySelector('.word_in_nuance')
+      let parseFurigana = getF.innerHTML.replace(/ /g,'').slice(2,-2).replace("[", "<rt>").replace("]", "</rt>")
+      showFurigana.innerHTML = `<ruby>${parseFurigana}</ruby>`
+      getFurigana.innerHTML = ""
+      getFurigana.style.padding = "0px"
+    })
   }
 }
 

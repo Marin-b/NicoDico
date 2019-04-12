@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_173024) do
+ActiveRecord::Schema.define(version: 2019_04_12_084826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_173024) do
     t.string "anto"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order", default: 20
     t.index ["nuance_id"], name: "index_antonymes_on_nuance_id"
   end
 
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_173024) do
     t.string "exemple_cb"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order", default: 20
     t.index ["nuance_id"], name: "index_exemples_on_nuance_id"
   end
 
@@ -56,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_173024) do
     t.string "remarque"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order", default: 20
     t.index ["user_id"], name: "index_nuances_on_user_id"
     t.index ["word_id"], name: "index_nuances_on_word_id"
   end
@@ -65,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_173024) do
     t.string "reg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order", default: 20
     t.index ["nuance_id"], name: "index_registres_on_nuance_id"
   end
 
@@ -82,6 +86,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_173024) do
     t.string "char"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order", default: 20
     t.index ["nuance_id"], name: "index_specials_on_nuance_id"
   end
 
@@ -90,6 +95,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_173024) do
     t.string "syno"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order", default: 20
     t.index ["nuance_id"], name: "index_synonymes_on_nuance_id"
   end
 
@@ -98,6 +104,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_173024) do
     t.string "trad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order", default: 20
     t.index ["nuance_id"], name: "index_traductions_on_nuance_id"
   end
 
@@ -124,6 +131,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_173024) do
     t.string "var"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order", default: 20
     t.index ["nuance_id"], name: "index_variantes_on_nuance_id"
   end
 

@@ -87,13 +87,14 @@ class WordController < ApplicationController
         :nature_cb,
         :remarque,
         :commentaire,
-        traductions_attributes: [:_destroy, :id, :trad],
-        exemples_attributes: [:_destroy, :id, :exemple_cb, :exemple_fr],
-        synonymes_attributes: [:_destroy, :id, :syno],
-        antonymes_attributes: [:_destroy, :id, :anto],
-        registres_attributes: [:_destroy, :id, :reg],
-        variantes_attributes: [:_destroy, :id, :var],
-        specials_attributes: [:_destroy, :id, :char]
+        :order,
+        traductions_attributes: [:_destroy, :id, :trad, :order],
+        exemples_attributes: [:_destroy, :id, :exemple_cb, :exemple_fr, :order],
+        synonymes_attributes: [:_destroy, :id, :syno, :order],
+        antonymes_attributes: [:_destroy, :id, :anto, :order],
+        registres_attributes: [:_destroy, :id, :reg, :order],
+        variantes_attributes: [:_destroy, :id, :var, :order],
+        specials_attributes: [:_destroy, :id, :char, :order]
       ]
     )
   end

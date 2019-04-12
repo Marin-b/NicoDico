@@ -65,6 +65,14 @@ GEM
     dotenv-rails (2.7.2)
       dotenv (= 2.7.2)
       railties (>= 3.2, < 6.1)
+    elasticsearch (6.3.0)
+      elasticsearch-api (= 6.3.0)
+      elasticsearch-transport (= 6.3.0)
+    elasticsearch-api (6.3.0)
+      multi_json
+    elasticsearch-transport (6.3.0)
+      faraday
+      multi_json
     erubi (1.8.0)
     execjs (2.7.0)
     faraday (0.15.4)
@@ -181,6 +189,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    searchkick (4.0.0)
+      activemodel (>= 5)
+      elasticsearch (>= 6)
+      hashie
     simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -240,6 +252,7 @@ DEPENDENCIES
   rails (= 5.2.2)
   redis
   sassc-rails
+  searchkick (~> 4.0)
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)

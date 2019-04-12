@@ -6,7 +6,7 @@
     <div style = "display:flex">
     <% @word = Word.find(nuance.word_id) %>
     <h3 class="blue word_in_nuance"><%= @word.word %></h3>
-      <% specials = nuance.specials %>
+      <% specials = nuance.specials.sort_by {|nuance| nuance.order} %>
       <% if specials.length > 0 %>
         <h3 class="specials blue" style="padding-left: 15px;">
           <% unless specials.first&.char == "" || specials.first == nil %>
@@ -18,7 +18,7 @@
     <span class="span-show">
       <h5 class="light blue"><%= "(#{nuance.nature_fr} | #{nuance.nature_cb})" %></h5>
       <span class="span-show">
-        <% registres = nuance.registres %>
+        <% registres = nuance.registres.sort_by {|nuance| nuance.order} %>
         <% unless registres.first&.reg == "" || registres.first == nil %>
 
         <h5 class="light blue">(
@@ -31,7 +31,7 @@
     </span>
   </span>
 </div>
-  <% trads = nuance.traductions %>
+  <% trads = nuance.traductions.sort_by {|nuance| nuance.order} %>
   <% unless trads.first&.trad == "" || trads.first == nil %>
     <% trads.each do |traduction| %>
       <span style="display:flex; align-items: center;">
@@ -52,7 +52,7 @@
 <% end %>
 <hr>
 <div class="exemple-box">
-  <% ex = nuance.exemples %>
+  <% ex = nuance.exemples.sort_by {|nuance| nuance.order} %>
   <% ex.each do |exemple| %>
     <div class="exempleCycle">
       <h5 class="mediumsized blue">
@@ -64,7 +64,7 @@
     </div>
   <% end %>
   <h5 class="blue light seemore">Voir plus d'exemples</h5>
-  <% varis = nuance.variantes %>
+  <% varis = nuance.variantes.sort_by {|nuance| nuance.order} %>
   <% if varis.length > 0 %>
   <hr>
     <h5 class="light blue"> Variantes :
@@ -75,8 +75,8 @@
   <% end %>
 </div>
 <% language = nuance.word.dictionary.lang%>
-<% syn = nuance.synonymes %>
-<% ant = nuance.antonymes %>
+<% syn = nuance.synonymes.sort_by {|nuance| nuance.order} %>
+<% ant = nuance.antonymes.sort_by {|nuance| nuance.order} %>
 <% check_syn =  syn.first&.syno != "" && syn.first != nil  %>
 <% check_ant =  ant.first&.anto != "" && ant.first != nil %>
 <% if check_syn || check_ant %>

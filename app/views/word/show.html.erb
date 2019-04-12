@@ -12,7 +12,8 @@
     <i class="fas fa-volume-up orange"></i>
   </div>
   <div class="nuances-wrapper">
-    <% @word.nuances.each do |nuance| %>
+    <% nuances = @word.nuances.sort_by {|nuance| nuance.order} %>
+    <% nuances.each do |nuance| %>
       <div class="blue-rectangle nuance-box">
         <%= render 'shared/nuance_show', nuance: nuance %>
         <% if user_signed_in? %>

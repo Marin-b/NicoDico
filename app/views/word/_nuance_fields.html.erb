@@ -8,6 +8,7 @@
       <% end %>
     </div>
   </div>
+  <%= f.input :order, label:"Ordre" %>
   <% if @dict.lang == "coréen" %>
     <h6>Hanja</h6>
   <% elsif @dict.lang == "japonais" %>
@@ -16,7 +17,7 @@
     <h6>Pinyin</h6>
   <% end %>
 
-  <div class="hanja-form">
+  <div class="exemple-form">
     <%= f.simple_fields_for :specials do |hanja| %>
       <%= render 'special_fields', f: hanja %>
     <% end %>
@@ -28,7 +29,7 @@
   </div>
   <hr>
   <h6>Traductions</h6>
-  <div class="hanja-form">
+  <div class="exemple-form">
     <%= f.simple_fields_for :traductions do |tradu| %>
       <%= render 'word/traduction_fields', f: tradu %>
     <% end %>

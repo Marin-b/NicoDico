@@ -13,6 +13,32 @@
     justify-content: space-around;
   }
 }
+.kor-nuances {
+  .numeric{
+    max-width: 60px;
+    min-width: 60px;
+    max-height: 30px;
+  }
+  .is-valid {
+    background-image: none;
+    padding-right: 0px;
+    border-color: silver;
+  }
+}
+
+.edit_word {
+  .numeric{
+    max-width: 60px;
+    min-width: 60px;
+    max-height: 30px;
+  }
+  .is-valid {
+    background-image: none;
+    padding-right: 0px;
+    border-color: silver;
+  }
+}
+
 .nuancemot {
   display:flex;
   justify-content: space-around;
@@ -20,7 +46,10 @@
 .nuance-header-form {
   text-align: center;
 }
-
+.nested-fields {
+  align-items: baseline;
+  padding: 5px;
+}
 .grouped {
   display: flex;
   flex-direction: column;
