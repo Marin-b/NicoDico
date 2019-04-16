@@ -1,5 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
+    puts "initiating facebook login"
     user = User.find_for_facebook_oauth(request.env['omniauth.auth'])
 
     if user.persisted?
