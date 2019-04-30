@@ -75,7 +75,7 @@
 </div>
 <% unless nuance.commentaire == "" %>
   <hr>
-  <h5 class="light blue"><%= nuance.commentaire %>.</h5>
+  <h5 class="light blue"><%= nuance.commentaire %></h5>
 <% end %>
 <% language = nuance.word.dictionary.lang%>
 <% syn = nuance.synonymes.sort_by {|nuance| nuance.order} %>

@@ -1,7 +1,7 @@
 .word-show  {
   background-color: $blue;
   margin: 2vh auto;
-  width: 60vw;
+  width: 70vw;
   color: white;
   height: 25vh;
   display: flex;
@@ -31,7 +31,7 @@
 .blue-rectangle {
   border-radius: 0px 0px 20px 20px;
   background-color: white;
-  width: 60vw;
+  width: 70vw;
   margin: 0px auto;
   padding: 30px;
   display:block;
@@ -107,8 +107,8 @@
 }
 .suggestions {
   background-color: $blue;
-  width: 60%;
-  right: 20%;
+  width: 70%;
+  right: 15%;
   margin:0 auto;
   border-radius: 20px 20px 0px 0px;
   padding: 20px;

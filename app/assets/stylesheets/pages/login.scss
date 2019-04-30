@@ -1,0 +1,14 @@
+.facebook-login{
+  border-radius: 8px;
+  background-color: #4267B1;
+  width: 50%;
+  margin: 0 auto;
+  color: white;
+  i {
+    color: white;
+  }
+  &:hover {
+    border-radius: 15px;
+  }
+}
+
