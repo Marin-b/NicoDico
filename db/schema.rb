@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_100522) do
+ActiveRecord::Schema.define(version: 2019_04_30_153746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,15 @@ ActiveRecord::Schema.define(version: 2019_04_12_100522) do
     t.index ["nuance_id"], name: "index_specials_on_nuance_id"
   end
 
+  create_table "suggestions", force: :cascade do |t|
+    t.string "author"
+    t.text "suggestion"
+    t.bigint "words_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["words_id"], name: "index_suggestions_on_words_id"
+  end
+
   create_table "synonymes", force: :cascade do |t|
     t.bigint "nuance_id"
     t.string "syno"
@@ -154,6 +163,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_100522) do
   add_foreign_key "selections", "listes"
   add_foreign_key "selections", "nuances"
   add_foreign_key "specials", "nuances"
+  add_foreign_key "suggestions", "words", column: "words_id"
   add_foreign_key "synonymes", "nuances"
   add_foreign_key "traductions", "nuances"
   add_foreign_key "variantes", "nuances"

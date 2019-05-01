@@ -1,0 +1,16 @@
+
+<%= simple_form_for(@suggestion) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :words_id, input_html: {value: params[:word_id] || 'unknown'}, as: :hidden %>
+    <%= f.input :author, placeholder: "Pseudonyme", label: false %>
+    <%= f.text_area :suggestion, class: "suggestion-input" %>
+  </div>
+  <br>
+  <div class="form-actions">
+    <%= f.button :submit, value:"Envoyer" %>
+  </div>
+    <%= link_to 'retour', :back %>
+<% end %>

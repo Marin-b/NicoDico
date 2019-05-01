@@ -1,5 +1,5 @@
 <div class="addlist_popup">
-  <h4>Ajouter le mot a une liste</h4>
+  <h4>Ajouter à une liste</h4>
   <%= form_tag({controller: "listes", action: "add_word_from_list"}) do %>
     <%= select_tag 'list_id', options_from_collection_for_select(listes, "id", "name") %>
     <%= hidden_field_tag 'nuance_id', nuance.id %>

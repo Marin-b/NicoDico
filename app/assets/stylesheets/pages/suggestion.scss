@@ -1,0 +1,43 @@
+.suggestion-input {
+  width: 100%;
+  height: 150px;
+}
+
+.new_suggestion {
+  width: 50%;
+  margin: 0 auto;
+  text-align:center;
+}
+
+.whitediv{
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 5px;
+  height: 50px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px;
+  cursor: pointer;
+  h6 {
+    min-width: 200px;
+    max-width: 200px;
+    text-align: left
+  }
+}
+
+.suggestion-list{
+  margin: 0 auto;
+}
+.suggestion-p {
+  text-align: left;
+  padding: 5px 30px;
+  height: 0px;
+  font-size: 0px;
+  transition: font-size 0.3s, height 0.3s;
+}
+
+.shown-paragraph{
+  height: auto;
+  font-size: 12px;
+}

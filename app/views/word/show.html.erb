@@ -23,8 +23,10 @@
       </div>
     <% end %>
   </div>
-  <div class="suggestions">
-     <h3>Suggérer un mot | Faire part d'une erreur</h3>
-  </div>
+  <%= link_to new_suggestion_path(word_id: @word.id) do %>
+    <div class="suggestions">
+       <h3>Suggérer un mot | Faire part d'une erreur</h3>
+    </div>
+  <% end %>
 </div>
 

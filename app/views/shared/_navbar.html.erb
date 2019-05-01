@@ -39,7 +39,10 @@
           <%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %>
         <% end %>
         <% if current_user&.status == "admin" %>
+        <hr>
+        <h6 style="padding-left: 10px;">Administrateur : </h6>
           <%= link_to "Contribuer", choose_path, class: "dropdown-item" %>
+          <%= link_to "Suggestions", suggestions_path, class: "dropdown-item" %>
         <% end %>
       </div>
     <% else %>
@@ -49,9 +52,9 @@
         <hr>
         <h6 style="padding-left: 10px;">Dictionnaires : </h6>
         <%= link_to "Japonais", dict_path("japonais"), class: "dropdown-item" %>
-         <%= link_to "Coréen", dict_path("coréen"), class: "dropdown-item" %>
-          <%= link_to "Ch.traditionnel", dict_path("chinois traditionnel"), class: "dropdown-item" %>
-          <%= link_to "Ch.simplifié", dict_path("chinois simplifié"), class: "dropdown-item" %>
+        <%= link_to "Coréen", dict_path("coréen"), class: "dropdown-item" %>
+        <%= link_to "Ch.traditionnel", dict_path("chinois traditionnel"), class: "dropdown-item" %>
+        <%= link_to "Ch.simplifié", dict_path("chinois simplifié"), class: "dropdown-item" %>
         <hr>
         <% if current_user %>
           <%= link_to "Mon carnet", listes_path, class: "dropdown-item" %>
@@ -60,7 +63,10 @@
           <%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %>
         <% end %>
         <% if current_user&.status == "admin" %>
+          <hr>
+          <h6 style="padding-left: 10px;">Administrateur : </h6>
           <%= link_to "Contribuer", choose_path, class: "dropdown-item" %>
+          <%= link_to "Suggestions", suggestions_path, class: "dropdown-item" %>
         <% end %>
       </div>
     <% end %>

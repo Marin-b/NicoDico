@@ -6,6 +6,8 @@ import { toggleListePannel } from '../functions/toggleAddListes'
 import { searchList } from '../functions/searchList'
 import { addFurigana } from '../functions/addFurigana'
 import { autocompleteDropDown } from '../functions/autocompleteDropDown'
+//import { suggestionDropDown } from '../functions/suggestionDropDown'
+
 exempleShow();
 dynamicForm();
 toggleListePannel();

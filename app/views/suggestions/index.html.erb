@@ -1,0 +1,34 @@
+<script>
+  const suggestionDropDown = (event) => {
+    let paragraph
+    if (event.target.tagName === 'H6'){
+      paragraph = event.target.parentNode.parentNode.querySelector('p')
+    } else{
+      paragraph = event.target.parentNode.querySelector('p')
+    }
+    document.querySelectorAll('.shown-paragraph').forEach((para) => {
+      para.classList.remove('shown-paragraph')
+    })
+    paragraph.classList.toggle('shown-paragraph')
+  }
+</script>
+<br>
+<br>
+<div class="blue-rectangle" style="background-color: #E7E9EE; text-align: center;">
+  <h2 class="blue">Suggestions</h2>
+    <% @suggestions.each do |suggestion| %>
+    <div class="suggestion-and-text" onClick="suggestionDropDown(event)">
+    <div class="whitediv">
+        <% the_word = Word.find(suggestion.words_id) %>
+        <h6><%= suggestion.author %></h6>
+        <h6><%= link_to the_word.word, edit_dict_word_path(the_word.dictionary_id, the_word.word) %></h6>
+        <%= link_to suggestion_path(suggestion), method: :delete, data: { confirm: "Confirmer la supression pour #{the_word.word} par #{suggestion.author} " } do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
+    </div>
+      <p class="suggestion-p">
+        <%= suggestion.suggestion %>
+      </p>
+    </div>
+  <% end %>
+</div>
