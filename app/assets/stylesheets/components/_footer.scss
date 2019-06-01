@@ -1,0 +1,23 @@
+.footer{
+  background-color:  $blue;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 40px;
+  align-items: center;
+  border-top: 1px solid white;
+  a{
+    color: white;
+    margin-right: 30px;
+    transition: opacity 0.3s;
+    &:hover{
+      opacity: 0.5;
+    }
+  }
+}
+
+.special-h3{
+  h3{
+    margin: 20px 0px;
+  }
+}

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :word
   end
   get 'choose' => 'word#choose_dictionary_contrib'
-
+  get 'about' => 'pages#about'
+  get 'cg' => 'pages#cg'
   resources :suggestions
+
 end
