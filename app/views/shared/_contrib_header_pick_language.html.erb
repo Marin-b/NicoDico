@@ -1,6 +1,6 @@
 <div class="word-show JSmedaddy">
-  <h4><%= link_to "Japonais", new_dict_word_path(@dicts[0].lang) %></h4>
-  <h4><%= link_to "Coréen", new_dict_word_path(@dicts[1].lang) %></h4>
-  <h4><%= link_to "Ch.simpli", new_dict_word_path(@dicts[3].lang) %></h4>
-  <h4><%= link_to "Ch.tradi", new_dict_word_path(@dicts[2].lang) %></h4>
+  <h4><%= link_to "Japonais", new_dict_word_path(@dicts.find_by(lang: "japonais")) %></h4>
+  <h4><%= link_to "Coréen", new_dict_word_path(@dicts.find_by(lang: "coréen")) %></h4>
+  <h4><%= link_to "Ch.simpli", new_dict_word_path(@dicts.find_by(lang: "chinois simplifié")) %></h4>
+  <h4><%= link_to "Ch.tradi", new_dict_word_path(@dicts.find_by(lang: "chinois traditionnel")) %></h4>
 </div>
