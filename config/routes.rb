@@ -18,8 +18,9 @@ Rails.application.routes.draw do
     resources :word
   end
   get 'choose' => 'word#choose_dictionary_contrib'
+  get 'natures' => 'natures#edit'
   get 'about' => 'pages#about'
   get 'cg' => 'pages#cg'
+  resources :natures, only: [:create, :destroy]
   resources :suggestions
-
 end

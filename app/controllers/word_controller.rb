@@ -14,6 +14,7 @@ class WordController < ApplicationController
 
   def new
     @new_word = Word.new
+    @nat = Nature.where(lang: @dict.lang)
     build_nested
   end
 
@@ -28,7 +29,10 @@ class WordController < ApplicationController
   end
 
   def edit
+    params[:id] = params[:search_id] ? params[:search_id] : params[:id]
     @word = @dict.words.find_by_word(params[:id])
+    @word = @word ? @word : @dict.words.first
+    @nat = Nature.where(lang: @dict.lang)
   end
 
   def choose_dictionary_contrib

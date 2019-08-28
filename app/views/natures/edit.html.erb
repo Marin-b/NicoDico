@@ -1,0 +1,68 @@
+<br>
+<br>
+<h2 class="blue" style="margin: 0 auto; text-align: center;">Natures</h2>
+<br>
+<div class="blue-rectangle" style="border-radius: 0px 0px 0px 0px">
+  <h4 class="blue" style="margin: 0 auto; text-align: center;">Créer</h4>
+  <%= simple_form_for @new_nat do |f| %>
+  <%= f.input :lang, collection: [['Japonais', 'japonais'], ['Chinois simplifié', 'chinois simplifié'],['Chinois traditionnel', 'chinois traditionnel'] , ['Coréen', 'coréen']], include_blank: false, label: 'Langue' %>
+    <%= f.input :nat_cb, label: 'Nature Cible'  %>
+    <%= f.input :nat_fr, label: 'Nature Francais'  %>
+    <div style="width: 100%; text-align: center;">
+      <%= f.submit "Enregistrer" %>
+    </div>
+  <% end %>
+</div>
+<div class="blue-rectangle" style="border-radius: 0px 0px 0px 0px; margin-top: 20px;">
+  <h4 class="blue" style="margin: 0 auto; text-align: center;">Japonais</h4>
+  <br>
+  <% @jp_nat.each do |nat| %>
+    <div class="flex_nat">
+      <p><%= nat.nat_cb %></p>
+      <p><%= nat.nat_fr %></p>
+      <%= link_to nature_path(nat), method: :delete do %>
+        <i class="fas fa-minus-circle"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="blue-rectangle" style="border-radius: 0px 0px 0px 0px; margin-top: 20px;">
+  <h4 class="blue" style="margin: 0 auto; text-align: center;">Coréen</h4>
+  <br>
+  <% @kr_nat.each do |nat| %>
+    <div class="flex_nat">
+      <p><%= nat.nat_cb %></p>
+      <p><%= nat.nat_fr %></p>
+      <%= link_to nature_path(nat), method: :delete do %>
+        <i class="fas fa-minus-circle"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="blue-rectangle" style="border-radius: 0px 0px 0px 0px; margin-top: 20px;">
+  <h4 class="blue" style="margin: 0 auto; text-align: center;">Chinois simplifié</h4>
+  <br>
+  <% @cs_nat.each do |nat| %>
+    <div class="flex_nat">
+      <p><%= nat.nat_cb %></p>
+      <p><%= nat.nat_fr %></p>
+      <%= link_to nature_path(nat), method: :delete do %>
+        <i class="fas fa-minus-circle"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="blue-rectangle" style="margin-top: 20px;">
+  <h4 class="blue" style="margin: 0 auto; text-align: center;">Chinois traditionnel</h4>
+  <br>
+  <% @ct_nat.each do |nat| %>
+    <div class="flex_nat">
+      <p><%= nat.nat_cb %></p>
+      <p><%= nat.nat_fr %></p>
+      <%= link_to nature_path(nat), method: :delete do %>
+        <i class="fas fa-minus-circle"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<br>
