@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     post 'search' => 'dict#search'
     resources :word
   end
+  get 'dict/:id/autocomplete', to: 'dict#autocomplete'
   get 'choose' => 'word#choose_dictionary_contrib'
   get 'natures' => 'natures#edit'
   get 'about' => 'pages#about'

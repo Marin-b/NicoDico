@@ -24,6 +24,11 @@ class DictController < ApplicationController
     @frequents = @words.order('click DESC').limit(10)
   end
 
+  def autocomplete
+    results = AutocompleteSearchService.new(params[:q], @dict).call
+    render json: results
+  end
+
   private
 
   def find_dict
