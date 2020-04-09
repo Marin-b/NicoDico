@@ -3,7 +3,7 @@
     <h4><%= params[:search_error].html_safe %></h4>
   <% end %>
   <%= form_tag dict_search_path(@dict.lang), method: :post, class:"searchform" do %>
-    <%= text_field_tag :search_word, nil , class: "searchbar", placeholder: "Chercher un mot" %>
+    <%= text_field_tag :search_word, nil , class: "searchbar autocomplete", placeholder: "Chercher un mot", 'data-dict' => @dict.lang %>
     <%= button_tag :submit do %>
       <i class='fas fa-search fa-2x'></i>
     <% end %>
