@@ -28,4 +28,8 @@ class User < ApplicationRecord
 
     return user
   end
+
+  def admin?
+    status == 'admin'
+  end
 end

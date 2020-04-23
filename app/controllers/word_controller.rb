@@ -1,5 +1,5 @@
 class WordController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show, :forvo]
   before_action :admin_check, only: [:new, :create, :edit, :destroy, :update, :choose_dictionary_contrib]
   before_action :load_lists, if: :user_signed_in?, only: [:show]
   before_action :load_dicts, only: [:new, :choose_dictionary_contrib, :create, :edit]
@@ -37,6 +37,12 @@ class WordController < ApplicationController
 
   def choose_dictionary_contrib
 
+  end
+
+  def forvo
+    @word = Word.find_by(word: params[:id])
+    res = HTTParty.get("https://apifree.forvo.com/key/#{ENV["FORVO_API"]}/format/json/action/word-pronunciations/word/#{URI.encode(@word.word)}/language/#{@word.dictionary.forvo_ini}")
+    render json: res
   end
 
   def update

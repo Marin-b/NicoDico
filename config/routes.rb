@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   ##dicts
   resources :dict do
     post 'search' => 'dict#search'
-    resources :word
+    resources :word do
+      member do
+        get :forvo
+      end
+    end
   end
   get 'dict/:id/autocomplete', to: 'dict#autocomplete'
   get 'choose' => 'word#choose_dictionary_contrib'

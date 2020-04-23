@@ -3,13 +3,16 @@
   <div class="word-show rectangle">
     <div class="middle-header">
       <h1><%= @word.word %></h1>
+      <%= link_to 'Modifier', edit_dict_word_path(@dict, @word), class: 'white' if current_user&.admin? %>
       <% if @dict.lang == "chinois traditionnel" %>
         <%= link_to "Vers chinois simplifié", dict_search_path("chinois simplifié", search_word: @word.nuances.first.traductions.first.trad), style:"color:white", method: "post" %>
       <% elsif @dict.lang == "chinois simplifié"%>
           <%= link_to "Vers chinois traditionnel", dict_search_path("chinois traditionnel", search_word: @word.nuances.first.traductions.first.trad), style:"color:white", method: "post" %>
       <% end %>
     </div>
-    <i class="fas fa-volume-up orange"></i>
+    <div class="prono">
+      <i class="fas fa-volume-up orange audio-start"></i>
+    </div>
   </div>
   <div class="nuances-wrapper">
     <% nuances = @word.nuances.sort_by {|nuance| nuance.order} %>
@@ -23,10 +26,11 @@
       </div>
     <% end %>
   </div>
+  <p><a href="https://forvo.com/" title="Pronunciations by Forvo"><img src="https://api.forvo.com/byforvoblue.gif" width="120" height="40" alt="Pronunciations by Forvo" style="border:0" /></a></p>
   <%= link_to new_suggestion_path(word_id: @word.id) do %>
     <div class="suggestions">
        <h3>Suggérer un mot | Faire part d'une erreur</h3>
     </div>
   <% end %>
 </div>
-
+<audio id="word-audio" data-word="<%= @word.word %>" data-loaded="false" ></audio>

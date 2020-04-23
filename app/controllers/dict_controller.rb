@@ -1,5 +1,5 @@
 class DictController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:search, :show, :index]
+  skip_before_action :authenticate_user!, only: [:search, :show, :index, :autocomplete]
   before_action :find_dict
   before_action :admin_check, only: [:new, :create, :edit, :destroy, :update]
 

@@ -7,6 +7,7 @@ import { searchList } from '../functions/searchList'
 import { addFurigana } from '../functions/addFurigana'
 import { autocompleteDropDown } from '../functions/autocompleteDropDown'
 import { autocompleteSearch } from '../functions/autocomplete'
+import { forvo } from '../functions/forvo'
 //import { suggestionDropDown } from '../functions/suggestionDropDown'
 
 exempleShow();
@@ -16,3 +17,4 @@ searchList();
 addFurigana();
 autocompleteDropDown();
 autocompleteSearch();
+forvo();
