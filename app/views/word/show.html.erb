@@ -3,7 +3,7 @@
   <div class="word-show rectangle">
     <div class="middle-header">
       <h1><%= @word.word %></h1>
-      <%= link_to 'Modifier', edit_dict_word_path(@dict, @word), class: 'white' if current_user&.admin? %>
+      <%= link_to 'Modifier', edit_dict_word_path(@dict, @word.word), class: 'white' if current_user&.admin? %>
       <% if @dict.lang == "chinois traditionnel" %>
         <%= link_to "Vers chinois simplifié", dict_search_path("chinois simplifié", search_word: @word.nuances.first.traductions.first.trad), style:"color:white", method: "post" %>
       <% elsif @dict.lang == "chinois simplifié"%>
