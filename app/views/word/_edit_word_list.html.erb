@@ -1,0 +1,71 @@
+<div id="fixed-word-list-container">
+  <div class="header">
+    <div class="search" style="padding: 10px">
+      <input type="text" placeholder="Rechercher" id="search-list">
+    </div>
+    <i class="fas fa-times blue fa-lg" id="close-list"></i>
+  </div>
+  <div class='word-list'>
+    <div style="text-align: center;">
+      <%= words.count %> mots
+      <br>
+      <%= @dict.nuances.count %> nuances
+      <br>
+      <%= @dict.exemples.count %> exemples
+    </div>
+    <% @words.sort.each do |w| %>
+    <p style="margin: 0" data-filter="<%= w.word %>" class="<%= 'selected' if w === @word %>">
+      <%= link_to w.word, edit_dict_word_path(@dict, w.word) %>
+    </p>
+    <% end %>
+  </div>
+</div>
+<div id="open-list">
+  <i class="fas fa-chevron-right">
+  </i>
+</div>
+
+
+<style>
+  .hidden{
+    display: none;
+  }
+</style>
+
+
+
+<script>
+  const open = document.querySelector("#open-list")
+  const container = document.querySelector("#fixed-word-list-container")
+  open.addEventListener("click", () => {
+    container.style.left ="0px"
+  })
+  const close = document.querySelector("#close-list")
+  close.addEventListener("click", () => {
+    container.style.left ="-400px"
+  })
+
+
+  const input = document.querySelector("#search-list")
+
+  const hide = (el) => {
+    el.classList.add("hidden")
+  }
+
+  const show = (el) => {
+    el.classList.remove("hidden")
+  }
+  const listElements = document.querySelector('.word-list').querySelectorAll('p')
+  input.addEventListener("keyup", (e) => {
+    const val = e.target.value
+    console.log(listElements, document.querySelector('.word-list'))
+    listElements.forEach(el => {
+
+      if (el.dataset.filter.includes(val)) {
+        show(el)
+      } else {
+        hide(el)
+      }
+    })
+  })
+</script>

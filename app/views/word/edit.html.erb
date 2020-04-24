@@ -1,8 +1,8 @@
+<%= render 'edit_word_list', words: @words %>
 <div class="new-wrapper">
-  <%= render 'shared/contrib_header_pick_language' %>
+  <%= render 'shared/contrib_header_pick_language'%>
   <div class="blue-rectangle">
     <%= render 'shared/edit_navbar' %>
-    <%= render 'shared/select_word', words: @words %>
     <%= simple_form_for @word, url: dict_word_path(@dict, @word),
                                method: "patch" do |f| %>
       <%= f.input :word, label: "Mot" %>
